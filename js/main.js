@@ -275,6 +275,9 @@
   function buildCarousel(section) {
     const locale = getLocale();
     const slides = section.slides;
+    const firstCaption = slides[0]
+      ? slides[0].caption[locale] || slides[0].caption.pt
+      : "";
 
     const slidesHtml = slides
       .map(function (slide, i) {
@@ -293,7 +296,7 @@
             escapeHtml(t(section.wip ? "carousel.wip" : "carousel.placeholder")) +
             "</span></div>";
         return (
-          '<div class="carousel-slide' +
+          '<article class="cover-card' +
           (i === 0 ? " is-active" : "") +
           '" data-index="' +
           i +
@@ -309,9 +312,7 @@
           escapeHtml(t("carousel.open")) +
           '">' +
           media +
-          '</button><p class="slide-caption">' +
-          escapeHtml(caption) +
-          "</p></div>"
+          "</button></article>"
         );
       })
       .join("");
@@ -368,36 +369,79 @@
       section.id +
       '" aria-roledescription="carousel"><div class="carousel-stage">' +
       prevBtn +
-      '<div class="carousel-card"><div class="carousel-viewport"><div class="carousel-track">' +
+      '<div class="coverflow" aria-live="polite"><div class="coverflow-scene">' +
       slidesHtml +
-      "</div></div></div>" +
+      '</div></div>' +
       nextBtn +
-      "</div>" +
+      '</div><p class="carousel-caption">' +
+      escapeHtml(firstCaption) +
+      "</p>" +
       dots +
       "</div></section>"
     );
   }
 
   function initCarousel(root) {
-    const slides = Array.prototype.slice.call(root.querySelectorAll(".carousel-slide"));
+    const slides = Array.prototype.slice.call(root.querySelectorAll(".cover-card"));
     const sectionId = root.getAttribute("data-carousel");
+    const section = findSection(sectionId);
     let index = 0;
     const dots = Array.prototype.slice.call(root.querySelectorAll(".dot"));
     const prev = root.querySelector(".carousel-btn.prev");
     const next = root.querySelector(".carousel-btn.next");
+    const captionEl = root.querySelector(".carousel-caption");
     let autoplayTimer = null;
     let touchStartX = 0;
 
-    function go(to) {
-      if (!slides.length) return;
-      index = ((to % slides.length) + slides.length) % slides.length;
-      slides.forEach(function (s, i) {
-        s.classList.toggle("is-active", i === index);
+    function layout() {
+      const n = slides.length;
+      const reduce = prefersReducedMotion();
+      slides.forEach(function (card, i) {
+        let offset = i - index;
+        if (n > 2) {
+          if (offset > n / 2) offset -= n;
+          if (offset < -n / 2) offset += n;
+        }
+        const abs = Math.abs(offset);
+        const x = offset * (window.innerWidth < 821 ? 38 : 48);
+        const z = reduce ? 0 : -abs * 90;
+        const rotY = reduce ? 0 : offset * -32;
+        const scale = offset === 0 ? 1 : Math.max(0.7, 1 - abs * 0.16);
+        const opacity = abs > 2 ? 0 : Math.max(0.35, 1 - abs * 0.28);
+        card.style.transform =
+          "translate(-50%, -50%) translateX(" +
+          x +
+          "%) translateZ(" +
+          z +
+          "px) rotateY(" +
+          rotY +
+          "deg) scale(" +
+          scale +
+          ")";
+        card.style.zIndex = String(200 - abs * 10);
+        card.style.opacity = String(opacity);
+        card.style.pointerEvents = abs <= 1 ? "auto" : "none";
+        card.style.filter = abs === 0 ? "none" : "brightness(0.82)";
+        card.setAttribute("aria-hidden", offset === 0 ? "false" : "true");
+        card.classList.toggle("is-active", offset === 0);
       });
+
       dots.forEach(function (d, i) {
         d.classList.toggle("is-active", i === index);
         d.setAttribute("aria-selected", String(i === index));
       });
+
+      if (captionEl && section && section.slides[index]) {
+        const locale = getLocale();
+        const slide = section.slides[index];
+        captionEl.textContent = slide.caption[locale] || slide.caption.pt;
+      }
+    }
+
+    function go(to) {
+      if (!slides.length) return;
+      index = ((to % slides.length) + slides.length) % slides.length;
+      layout();
     }
 
     function stopAutoplay() {
@@ -434,10 +478,28 @@
       });
     });
 
+    slides.forEach(function (card) {
+      card.addEventListener("click", function (e) {
+        const i = Number(card.getAttribute("data-index"));
+        if (i !== index) {
+          e.preventDefault();
+          go(i);
+          startAutoplay();
+        }
+      });
+    });
+
     Array.prototype.forEach.call(root.querySelectorAll("[data-open-lightbox]"), function (btn) {
-      btn.addEventListener("click", function () {
+      btn.addEventListener("click", function (e) {
+        const i = Number(btn.getAttribute("data-index"));
+        if (i !== index) {
+          e.preventDefault();
+          go(i);
+          startAutoplay();
+          return;
+        }
         stopAutoplay();
-        openLightbox(sectionId, Number(btn.getAttribute("data-index")) || index);
+        openLightbox(sectionId, index);
       });
     });
 
@@ -478,6 +540,15 @@
       { passive: true }
     );
 
+    window.addEventListener(
+      "resize",
+      function () {
+        layout();
+      },
+      { passive: true }
+    );
+
+    layout();
     startAutoplay();
   }
 
@@ -612,23 +683,28 @@
     SECTIONS.forEach(function (section) {
       const root = document.querySelector('[data-carousel="' + section.id + '"]');
       if (!root) return;
-      Array.prototype.forEach.call(root.querySelectorAll(".carousel-slide"), function (slideEl, i) {
+      Array.prototype.forEach.call(root.querySelectorAll(".cover-card"), function (card, i) {
         const slide = section.slides[i];
         if (!slide) return;
         const caption = slide.caption[locale] || slide.caption.pt;
-        const capEl = slideEl.querySelector(".slide-caption");
-        if (capEl) capEl.textContent = caption;
-        const img = slideEl.querySelector("img");
+        const img = card.querySelector("img");
         if (img) img.alt = caption;
-        const ph = slideEl.querySelector(".slide-placeholder span");
+        const ph = card.querySelector(".slide-placeholder span");
         if (ph) ph.textContent = t(section.wip ? "carousel.wip" : "carousel.placeholder");
-        const openBtn = slideEl.querySelector(".slide-open");
+        const openBtn = card.querySelector(".slide-open");
         if (openBtn) openBtn.setAttribute("aria-label", t("carousel.open"));
-        const hint = slideEl.querySelector(".slide-hint span");
+        const hint = card.querySelector(".slide-hint span");
         if (hint) hint.textContent = t("carousel.hint");
-        const tapHint = slideEl.querySelector(".slide-tap-hint");
+        const tapHint = card.querySelector(".slide-tap-hint");
         if (tapHint) tapHint.textContent = t("carousel.hintTouch");
       });
+      const active = root.querySelector(".cover-card.is-active");
+      const captionEl = root.querySelector(".carousel-caption");
+      if (active && captionEl) {
+        const i = Number(active.getAttribute("data-index"));
+        const slide = section.slides[i];
+        if (slide) captionEl.textContent = slide.caption[locale] || slide.caption.pt;
+      }
     });
     if (!document.getElementById("lightbox")?.hidden) renderLightboxSlide();
   }
