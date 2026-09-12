@@ -403,7 +403,7 @@
           if (offset < -n / 2) offset += n;
         }
         const abs = Math.abs(offset);
-        const x = offset * (window.innerWidth < 821 ? 38 : 48);
+        const x = offset * (window.innerWidth < 981 ? 28 : 40);
         const z = reduce ? 0 : -abs * 90;
         const rotY = reduce ? 0 : offset * -32;
         const scale = offset === 0 ? 1 : Math.max(0.7, 1 - abs * 0.16);
@@ -434,7 +434,13 @@
       if (captionEl && section && section.slides[index]) {
         const locale = getLocale();
         const slide = section.slides[index];
-        captionEl.textContent = slide.caption[locale] || slide.caption.pt;
+        const nextText = slide.caption[locale] || slide.caption.pt;
+        if (captionEl.textContent === nextText) return;
+        captionEl.classList.add("is-fading");
+        window.setTimeout(function () {
+          captionEl.textContent = nextText;
+          captionEl.classList.remove("is-fading");
+        }, 160);
       }
     }
 
@@ -553,7 +559,7 @@
   }
 
   /* —— Lightbox —— */
-  const lightboxState = { sectionId: null, index: 0 };
+  const lightboxState = { sectionId: null, index: 0, busy: false };
 
   function findSection(id) {
     for (let i = 0; i < SECTIONS.length; i++) {
@@ -562,32 +568,35 @@
     return null;
   }
 
-  function renderLightboxSlide() {
-    const section = findSection(lightboxState.sectionId);
-    const lb = document.getElementById("lightbox");
-    if (!section || !lb) return;
+  function buildLightboxLayer(section, slide, caption) {
+    const layer = document.createElement("div");
+    layer.className = "lb-layer";
+    if (slide.src) {
+      const img = document.createElement("img");
+      img.src = slide.src;
+      img.alt = caption;
+      layer.appendChild(img);
+    } else {
+      const ph = document.createElement("div");
+      ph.className = "slide-placeholder";
+      const span = document.createElement("span");
+      span.textContent = t(section.wip ? "carousel.wip" : "carousel.placeholder");
+      ph.appendChild(span);
+      layer.appendChild(ph);
+    }
+    return layer;
+  }
 
-    const locale = getLocale();
-    const slide = section.slides[lightboxState.index];
-    if (!slide) return;
-
-    const caption = slide.caption[locale] || slide.caption.pt;
-    const media = document.getElementById("lightbox-media");
+  function updateLightboxChrome(section, caption, opts) {
+    opts = opts || {};
     const capEl = document.getElementById("lightbox-caption");
     const dotsWrap = document.getElementById("lightbox-dots");
 
-    if (media) {
-      if (slide.src) {
-        media.innerHTML =
-          '<img src="' + escapeHtml(slide.src) + '" alt="' + escapeHtml(caption) + '" />';
-      } else {
-        media.innerHTML =
-          '<div class="slide-placeholder"><span>' +
-          escapeHtml(t(section.wip ? "carousel.wip" : "carousel.placeholder")) +
-          "</span></div>";
-      }
+    if (capEl && !opts.skipCaption) {
+      capEl.classList.remove("is-out");
+      capEl.classList.add("is-in");
+      capEl.textContent = caption;
     }
-    if (capEl) capEl.textContent = caption;
 
     if (dotsWrap) {
       dotsWrap.innerHTML = section.slides
@@ -605,8 +614,11 @@
         .join("");
       Array.prototype.forEach.call(dotsWrap.querySelectorAll("[data-lb-go]"), function (btn) {
         btn.addEventListener("click", function () {
-          lightboxState.index = Number(btn.getAttribute("data-lb-go"));
-          renderLightboxSlide();
+          const next = Number(btn.getAttribute("data-lb-go"));
+          if (next === lightboxState.index || lightboxState.busy) return;
+          const dir = next >= lightboxState.index ? 1 : -1;
+          lightboxState.index = next;
+          renderLightboxSlide({ animate: true, dir: dir });
         });
       });
     }
@@ -618,34 +630,151 @@
     if (next) next.hidden = !multi;
   }
 
+  function paintLightboxContent(section, slide, caption) {
+    const media = document.getElementById("lightbox-media");
+    if (media) {
+      media.innerHTML = "";
+      const layer = buildLightboxLayer(section, slide, caption);
+      layer.classList.add("is-shown");
+      media.appendChild(layer);
+    }
+    updateLightboxChrome(section, caption);
+  }
+
+  function animateCaption(caption) {
+    const capEl = document.getElementById("lightbox-caption");
+    if (!capEl) return;
+    capEl.classList.remove("is-in");
+    capEl.classList.add("is-out");
+    window.setTimeout(function () {
+      capEl.textContent = caption;
+      capEl.classList.remove("is-out");
+      requestAnimationFrame(function () {
+        capEl.classList.add("is-in");
+      });
+    }, 180);
+  }
+
+  function whenLayerReady(layer, done) {
+    const img = layer.querySelector("img");
+    if (!img || img.complete) {
+      done();
+      return;
+    }
+    let finished = false;
+    function finish() {
+      if (finished) return;
+      finished = true;
+      img.removeEventListener("load", finish);
+      img.removeEventListener("error", finish);
+      done();
+    }
+    img.addEventListener("load", finish);
+    img.addEventListener("error", finish);
+    window.setTimeout(finish, 450);
+  }
+
+  function renderLightboxSlide(opts) {
+    opts = opts || {};
+    const section = findSection(lightboxState.sectionId);
+    const lb = document.getElementById("lightbox");
+    if (!section || !lb) return;
+
+    const locale = getLocale();
+    const slide = section.slides[lightboxState.index];
+    if (!slide) return;
+
+    const caption = slide.caption[locale] || slide.caption.pt;
+    const media = document.getElementById("lightbox-media");
+    const hasCurrent = media && media.querySelector(".lb-layer");
+    const animate = opts.animate && hasCurrent;
+    const dir = opts.dir || 1;
+
+    if (!animate || prefersReducedMotion()) {
+      paintLightboxContent(section, slide, caption);
+      lightboxState.busy = false;
+      return;
+    }
+
+    if (lightboxState.busy) return;
+    lightboxState.busy = true;
+
+    const outgoing = media.querySelector(".lb-layer.is-shown") || media.querySelector(".lb-layer");
+    const incoming = buildLightboxLayer(section, slide, caption);
+    incoming.classList.add(dir < 0 ? "is-enter-prev" : "is-enter-next");
+    media.appendChild(incoming);
+
+    animateCaption(caption);
+    updateLightboxChrome(section, caption, { skipCaption: true });
+
+    whenLayerReady(incoming, function () {
+      void media.offsetWidth;
+      requestAnimationFrame(function () {
+        if (outgoing) {
+          outgoing.classList.remove("is-shown");
+          outgoing.classList.add(dir < 0 ? "is-leave-prev" : "is-leave-next");
+        }
+        incoming.classList.remove("is-enter-prev", "is-enter-next");
+        incoming.classList.add("is-shown");
+
+        window.setTimeout(function () {
+          if (outgoing && outgoing.parentNode === media) outgoing.remove();
+          Array.prototype.forEach.call(media.querySelectorAll(".lb-layer"), function (layer) {
+            if (layer !== incoming) layer.remove();
+          });
+          lightboxState.busy = false;
+        }, 580);
+      });
+    });
+  }
+
   function openLightbox(sectionId, index) {
     const lb = document.getElementById("lightbox");
     if (!lb || !findSection(sectionId)) return;
     lightboxState.sectionId = sectionId;
     lightboxState.index = index || 0;
-    renderLightboxSlide();
+    lightboxState.busy = false;
+
+    const media = document.getElementById("lightbox-media");
+    if (media) media.innerHTML = "";
+
+    renderLightboxSlide({ animate: false });
     lb.hidden = false;
     lb.setAttribute("aria-hidden", "false");
     document.body.classList.add("lightbox-open");
+
+    requestAnimationFrame(function () {
+      lb.classList.add("is-open");
+      const capEl = document.getElementById("lightbox-caption");
+      if (capEl) {
+        capEl.classList.remove("is-out");
+        capEl.classList.add("is-in");
+      }
+    });
+
     const closeBtn = lb.querySelector(".lightbox-close");
     if (closeBtn) closeBtn.focus();
   }
 
   function closeLightbox() {
     const lb = document.getElementById("lightbox");
-    if (!lb) return;
-    lb.hidden = true;
-    lb.setAttribute("aria-hidden", "true");
+    if (!lb || lb.hidden) return;
+    lb.classList.remove("is-open");
     document.body.classList.remove("lightbox-open");
-    lightboxState.sectionId = null;
+    window.setTimeout(function () {
+      lb.hidden = true;
+      lb.setAttribute("aria-hidden", "true");
+      lightboxState.sectionId = null;
+      lightboxState.busy = false;
+    }, 420);
   }
 
   function lightboxStep(delta) {
     const section = findSection(lightboxState.sectionId);
-    if (!section || section.slides.length < 2) return;
+    if (!section || section.slides.length < 2 || lightboxState.busy) return;
     lightboxState.index =
       (lightboxState.index + delta + section.slides.length) % section.slides.length;
-    renderLightboxSlide();
+    renderLightboxSlide({ animate: true, dir: delta });
   }
 
   function initLightbox() {
