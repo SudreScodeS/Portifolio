@@ -286,7 +286,9 @@
             escapeHtml(caption) +
             '" loading="lazy" decoding="async" /><span class="slide-hint"><span data-i18n="carousel.hint">' +
             escapeHtml(t("carousel.hint")) +
-            "</span></span></span>"
+            '</span></span><span class="slide-tap-hint" data-i18n="carousel.hintTouch">' +
+            escapeHtml(t("carousel.hintTouch")) +
+            "</span></span>"
           : '<div class="slide-placeholder" aria-hidden="true"><span>' +
             escapeHtml(t(section.wip ? "carousel.wip" : "carousel.placeholder")) +
             "</span></div>";
@@ -624,6 +626,8 @@
         if (openBtn) openBtn.setAttribute("aria-label", t("carousel.open"));
         const hint = slideEl.querySelector(".slide-hint span");
         if (hint) hint.textContent = t("carousel.hint");
+        const tapHint = slideEl.querySelector(".slide-tap-hint");
+        if (tapHint) tapHint.textContent = t("carousel.hintTouch");
       });
     });
     if (!document.getElementById("lightbox")?.hidden) renderLightboxSlide();
