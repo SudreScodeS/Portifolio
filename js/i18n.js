@@ -35,6 +35,8 @@ const I18N = {
     "contact.sub": "Conte o que precisa. Alinhamos escopo, prazo e investimento \u2014 com flexibilidade para negociar conforme o projeto.",
     "contact.whatsapp": "Falar no WhatsApp",
     "footer.note": "Portfólio para leads · Sem login nos sistemas",
+    "footer.dev": "Desenvolvido por",
+    "footer.devAria": "Desenvolvido por VS — abrir perfil do desenvolvedor",
     "carousel.prev": "Anterior",
     "carousel.next": "Próximo",
     "carousel.placeholder": "Screenshot em breve",
@@ -77,6 +79,8 @@ const I18N = {
     "contact.sub": "Tell us what you need. We\u2019ll align scope, timeline, and investment \u2014 with room to negotiate based on the project.",
     "contact.whatsapp": "Chat on WhatsApp",
     "footer.note": "Lead portfolio · No live system login required",
+    "footer.dev": "Developed by",
+    "footer.devAria": "Developed by VS — open developer profile",
     "carousel.prev": "Previous",
     "carousel.next": "Next",
     "carousel.placeholder": "Screenshot coming soon",
@@ -142,6 +146,10 @@ function getTheme() {
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
   updateThemeButtonLabel();
+  const logo = document.getElementById("footer-logo");
+  if (logo) {
+    logo.src = theme === "dark" ? "assets/LogoE-VS.png" : "assets/LogoC-VS.png";
+  }
 }
 
 function updateThemeButtonLabel() {

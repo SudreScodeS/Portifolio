@@ -1046,6 +1046,51 @@ body.lightbox-open {
   border-top: 1px solid var(--line);
 }
 
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-dev {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color var(--dur-fast) var(--ease-soft), opacity var(--dur-fast) var(--ease-soft);
+}
+
+.footer-dev:hover {
+  color: var(--ink);
+}
+
+.footer-dev-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.footer-dev-logo {
+  height: 26px;
+  width: auto;
+  opacity: 0.8;
+  transition: opacity var(--dur-fast) var(--ease-soft);
+}
+
+.footer-dev:hover .footer-dev-logo {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* —— Reveal (progressive: visible by default; hide only after JS boots) —— */
 /* —— Reveal —— */
 html.js-ready .reveal {
