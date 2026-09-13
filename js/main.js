@@ -160,6 +160,7 @@
       id: "erp",
       titleKey: "section.erp.title",
       descKey: "section.erp.desc",
+      wip: true,
       slides: [
         {
           src: "assets/screenshots/erp/dashboard.png",
@@ -188,6 +189,7 @@
       id: "scheduling",
       titleKey: "section.scheduling.title",
       descKey: "section.scheduling.desc",
+      wip: true,
       slides: [
         {
           src: "assets/screenshots/agendamento/home.png",
@@ -312,7 +314,13 @@
           escapeHtml(t("carousel.open")) +
           '">' +
           media +
-          "</button></article>"
+          "</button>" +
+          (section.wip
+            ? '<span class="wip-badge"><span class="wip-dot" aria-hidden="true"></span><span data-i18n="carousel.wip">' +
+              escapeHtml(t("carousel.wip")) +
+              "</span></span>"
+            : "") +
+          "</article>"
         );
       })
       .join("");
@@ -591,6 +599,25 @@
     opts = opts || {};
     const capEl = document.getElementById("lightbox-caption");
     const dotsWrap = document.getElementById("lightbox-dots");
+    const card = document.querySelector(".lightbox-card");
+
+    if (card) {
+      let badge = card.querySelector(".wip-badge");
+      if (section.wip) {
+        if (!badge) {
+          badge = document.createElement("span");
+          badge.className = "wip-badge is-lightbox";
+          card.appendChild(badge);
+        }
+        badge.innerHTML =
+          '<span class="wip-dot" aria-hidden="true"></span><span data-i18n="carousel.wip">' +
+          escapeHtml(t("carousel.wip")) +
+          "</span>";
+        badge.hidden = false;
+      } else if (badge) {
+        badge.hidden = true;
+      }
+    }
 
     if (capEl && !opts.skipCaption) {
       capEl.classList.remove("is-out");
@@ -826,6 +853,8 @@
         if (hint) hint.textContent = t("carousel.hint");
         const tapHint = card.querySelector(".slide-tap-hint");
         if (tapHint) tapHint.textContent = t("carousel.hintTouch");
+        const wipBadge = card.querySelector(".wip-badge [data-i18n='carousel.wip']");
+        if (wipBadge) wipBadge.textContent = t("carousel.wip");
       });
       const active = root.querySelector(".cover-card.is-active");
       const captionEl = root.querySelector(".carousel-caption");
