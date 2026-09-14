@@ -220,10 +220,10 @@
           },
         },
         {
-          src: "assets/screenshots/agendamento/AgendaPro.png",
+          src: "assets/screenshots/agendamento/finance.png",
           caption: {
-            pt: "GeSis Agenda \u2014 Agenda do profissional",
-            en: "GeSis Agenda \u2014 Pro calendar",
+            pt: "GeSis Agenda \u2014 Gestão financeira",
+            en: "GeSis Agenda \u2014 Financial management",
           },
         },
       ],
