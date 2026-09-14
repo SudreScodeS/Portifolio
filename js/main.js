@@ -93,6 +93,15 @@
       brl: "R$ 5.000\u201315.000",
       usd: "$2,000\u20135,000",
     },
+    {
+      id: "custom",
+      label: {
+        pt: "Sistema muito personalizado",
+        en: "Highly custom system",
+      },
+      brl: "Or\u00e7amento sob demanda",
+      usd: "Custom quote",
+    },
   ];
 
   /**
@@ -828,7 +837,7 @@
   }
 
   function renderSections() {
-    const mount = document.getElementById("works");
+    const mount = document.getElementById("works-mount");
     if (!mount) return;
     mount.innerHTML = SECTIONS.map(buildCarousel).join("");
     Array.prototype.forEach.call(mount.querySelectorAll("[data-carousel]"), initCarousel);
@@ -886,6 +895,58 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  function navOffset() {
+    const raw = getComputedStyle(document.documentElement).getPropertyValue("--nav-h");
+    const navH = parseFloat(raw) || 64;
+    return navH + 24;
+  }
+
+  function scrollToAnchor(id, behavior) {
+    if (!id) return false;
+    const target = document.getElementById(id);
+    if (!target) return false;
+
+    const focusEl =
+      id === "works"
+        ? target.querySelector(".jump") || target
+        : target.querySelector(".section-head h2") ||
+          target.querySelector(".section-head") ||
+          target;
+
+    // Sites: um pouco mais abaixo que o offset padrão, com folga da navbar
+    let offset = navOffset();
+    if (id === "sites") offset = Math.max(8, offset - 20);
+
+    const top = focusEl.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({
+      top: Math.max(0, top),
+      behavior: behavior || (prefersReducedMotion() ? "auto" : "smooth"),
+    });
+    return true;
+  }
+
+  function initAnchorLinks() {
+    document.addEventListener("click", function (e) {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+      const id = href.slice(1);
+      if (!document.getElementById(id)) return;
+      e.preventDefault();
+      if (scrollToAnchor(id)) {
+        history.pushState(null, "", href);
+      }
+    });
+
+    if (location.hash && location.hash.length > 1) {
+      const id = location.hash.slice(1);
+      requestAnimationFrame(function () {
+        scrollToAnchor(id, "auto");
+      });
+    }
+  }
+
   function initReveal() {
     document.documentElement.classList.add("js-ready");
     const revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
@@ -901,6 +962,7 @@
       renderPricing();
       wireContact();
       initNavScroll();
+      initAnchorLinks();
       initReveal();
       initLightbox();
       applyI18n(getLocale());
