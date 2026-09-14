@@ -903,6 +903,13 @@
 
   function scrollToAnchor(id, behavior) {
     if (!id) return false;
+    const smooth = behavior || (prefersReducedMotion() ? "auto" : "smooth");
+
+    if (id === "top") {
+      window.scrollTo({ top: 0, behavior: smooth });
+      return true;
+    }
+
     const target = document.getElementById(id);
     if (!target) return false;
 
@@ -920,7 +927,7 @@
     const top = focusEl.getBoundingClientRect().top + window.pageYOffset - offset;
     window.scrollTo({
       top: Math.max(0, top),
-      behavior: behavior || (prefersReducedMotion() ? "auto" : "smooth"),
+      behavior: smooth,
     });
     return true;
   }
