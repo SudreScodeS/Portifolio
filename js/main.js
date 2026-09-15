@@ -915,7 +915,7 @@
 
     const focusEl =
       id === "works"
-        ? target.querySelector(".jump") || target
+        ? target.querySelector(".works-head") || target
         : target.querySelector(".section-head h2") ||
           target.querySelector(".section-head") ||
           target;
@@ -954,6 +954,63 @@
     }
   }
 
+  function initWorksRail() {
+    const rail = document.getElementById("works-rail");
+    const works = document.getElementById("works");
+    if (!rail || !works) return;
+
+    const links = Array.prototype.slice.call(rail.querySelectorAll("[data-rail]"));
+    const sections = Array.prototype.slice.call(
+      document.querySelectorAll("#works-mount .work-section")
+    );
+
+    function setVisible(on) {
+      rail.classList.toggle("is-visible", on);
+      rail.setAttribute("aria-hidden", on ? "false" : "true");
+      document.body.classList.toggle("works-rail-open", on);
+    }
+
+    function setActive(id) {
+      links.forEach(function (link) {
+        link.classList.toggle("is-active", link.getAttribute("data-rail") === id);
+      });
+    }
+
+    function worksViewportRatio() {
+      const rect = works.getBoundingClientRect();
+      const top = Math.max(rect.top, 0);
+      const bottom = Math.min(rect.bottom, window.innerHeight);
+      const visible = Math.max(0, bottom - top);
+      return visible / Math.max(1, window.innerHeight);
+    }
+
+    function updateVisibility() {
+      // Só mostra quando Trabalhos ocupa boa parte da tela — some ao entrar em Preços/etc.
+      setVisible(worksViewportRatio() >= 0.55);
+    }
+
+    function updateActive() {
+      if (!rail.classList.contains("is-visible") || !sections.length) return;
+      const marker = window.innerHeight * 0.38;
+      let current = sections[0].id;
+      for (let i = 0; i < sections.length; i++) {
+        const top = sections[i].getBoundingClientRect().top;
+        if (top <= marker) current = sections[i].id;
+      }
+      setActive(current);
+    }
+
+    function onScroll() {
+      updateVisibility();
+      updateActive();
+    }
+
+    updateVisibility();
+    updateActive();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+  }
+
   function initReveal() {
     document.documentElement.classList.add("js-ready");
     const revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
@@ -970,6 +1027,7 @@
       wireContact();
       initNavScroll();
       initAnchorLinks();
+      initWorksRail();
       initReveal();
       initLightbox();
       applyI18n(getLocale());

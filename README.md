@@ -1,6 +1,6 @@
-# Portfólio estático
+# D&S core
 
-Site HTML/CSS/JS para enviar às leads: carrosséis de screenshots por tipo de projeto + tabela de preços. **PT / EN** (em EN os preços aparecem em USD).
+Site institucional estático da **D&S core** (sociedade SudreScodeS + Dtech Labs): apresentação, trabalhos em screenshots, preços. **PT / EN** (em EN os preços aparecem em USD).
 
 Sem build. Abra `index.html` no navegador ou sirva a pasta:
 
@@ -13,50 +13,40 @@ npx serve .
 ```
 index.html
 css/styles.css
-js/i18n.js          # strings PT/EN + locale
+js/i18n.js          # strings PT/EN + locale + tema
 js/main.js          # slides, carrosséis, preços, contato
-assets/screenshots/
-  sites/            # Elitium-Site, Vida Plena, PlanAI landing
-  pedidos/          # Basiquinho
-  erp/              # Elitium ERP
-  agendamento/      # WIP
-  personalizado/    # PlanAI app
+assets/
+  LogoC-VS.png / LogoE-VS.png   # SudreScodeS (C=claro, E=escuro)
+  LogoC-DL.png / LogoE-DL.png   # Dtech Labs
+  screenshots/
+    sites/
+    pedidos/
+    erp/
+    agendamento/
+    personalizado/
 ```
 
-## Projetos → seções
+## Seções
 
-| Projeto | Seção do site |
+Sobre · O que fazemos · Ideais · Trabalhos (carrosséis) · Preços · Contato
+
+## Projetos → carrosséis
+
+| Projeto | Seção |
 | --- | --- |
-| Elitium-Site, Clínica Vida Plena, PlanAI landing | **Sites** (1 carrossel) |
+| Elitium-Site, Clínica Vida Plena, PlanAI landing | **Sites** |
 | BasiquinhoBurguer | **Pedidos** |
 | Elitium-ERP | **ERP** |
-| Sistema de agendamento (WIP) | **Agendamento** |
+| GeSis Agenda / AgSys | **Agendamento** |
 | PlanAI (app) | **Personalizado** |
 
 ## Adicionar screenshots
 
-1. Salve as imagens em `assets/screenshots/<pasta>/` (ex.: `erp/01-dashboard.webp`).
-2. Em `js/main.js`, no array `SECTIONS`, troque `src: null` pelo caminho:
-
-```js
-{
-  src: "assets/screenshots/erp/01-dashboard.webp",
-  caption: {
-    pt: "Elitium ERP — Dashboard de vendas",
-    en: "Elitium ERP — Sales dashboard",
-  },
-},
-```
-
-## Preços (BRL / USD)
-
-Edite o array `PRICING` em `js/main.js`. Cada linha tem `brl` (PT) e `usd` (EN). Os USD são faixas fixas de exibição (~R$5/US$), não cotação ao vivo.
-
-## Contato
-
-Apenas WhatsApp. N\u00famero e mensagem pr\u00e9-preenchida (PT/EN) em `js/main.js` (`CONTACT` + `WA_MESSAGES`).
+1. Salve as imagens em `assets/screenshots/<pasta>/`.
+2. Em `js/main.js`, no array `SECTIONS`, registre `src` e legendas `caption.pt` / `caption.en`.
 
 ## Idioma e tema
 
-- Toggle **PT | EN** no header (preços em R$ / USD). Preferência em `localStorage` (`portfolio-locale`).
-- Toggle de **modo claro / escuro** (ícone sol/lua). Preferência em `portfolio-theme` (respeita `prefers-color-scheme` na primeira visita).
+- PT/EN no header (`localStorage`: `portfolio-locale`)
+- Claro/escuro (`portfolio-theme`) — troca também as logos VS e DL
+- Contato WhatsApp e textos: `js/main.js` + `js/i18n.js`

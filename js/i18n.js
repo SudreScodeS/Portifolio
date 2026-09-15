@@ -4,6 +4,10 @@
  */
 const I18N = {
   pt: {
+    "brand.name": "D&S core",
+    "nav.about": "Sobre",
+    "nav.services": "O que fazemos",
+    "nav.ideals": "Ideais",
     "nav.works": "Trabalhos",
     "nav.pricing": "Preços",
     "nav.contact": "Contato",
@@ -12,10 +16,43 @@ const I18N = {
     "nav.erp": "ERP",
     "nav.scheduling": "Agendamento",
     "nav.custom": "Personalizado",
-    "hero.title": "Trabalhos recentes",
-    "hero.sub": "Veja o que já entregamos — em screenshots, sem precisar abrir o sistema.",
+    "hero.headline": "Software e sites que resolvem o dia a dia do negócio",
+    "hero.sub": "Sociedade entre SudreScodeS e Dtech Labs — entregamos produtos digitais claros, sob medida e prontos para usar.",
+    "hero.ctaAbout": "Conhecer",
     "hero.cta": "Ver trabalhos",
-    "hero.ctaPrices": "Ver preços",
+    "about.title": "Sobre",
+    "about.lead": "A D&S core é a marca conjunta da sociedade entre SudreScodeS e Dtech Labs.",
+    "about.body": "Unimos produto, engenharia e entrega prática para construir sites e sistemas que o negócio realmente usa — com escopo alinhado, prazo realista e espaço para negociar conforme a necessidade.",
+    "about.partners": "Sócios",
+    "about.partnerVs": "SudreScodeS",
+    "about.partnerDl": "Dtech Labs",
+    "about.partnerVsAria": "SudreScodeS — abrir perfil",
+    "about.partnerDlAria": "Dtech Labs",
+    "services.title": "O que fazemos",
+    "services.lead": "Do site institucional ao sistema sob medida — sempre com foco no uso real.",
+    "services.sites.title": "Sites",
+    "services.sites.desc": "Landings e institucionais — do simples ao com funcionalidades específicas.",
+    "services.orders.title": "Pedidos e vendas",
+    "services.orders.desc": "Cardápio, carrinho, checkout, pagamentos e painel de pedidos.",
+    "services.erp.title": "ERP / CRM",
+    "services.erp.desc": "Vendas, estoque, financeiro, clientes, relatórios e analytics.",
+    "services.scheduling.title": "Agendamento",
+    "services.scheduling.desc": "Reservas, horários e gestão de agenda para clínicas, salões e consultorias.",
+    "services.custom.title": "Personalizado",
+    "services.custom.desc": "Dashboards, IA e fluxos feitos sob medida para o seu negócio.",
+    "ideals.title": "Ideais",
+    "ideals.lead": "O que guia a forma como projetamos e entregamos.",
+    "ideals.1.title": "Escopo claro",
+    "ideals.1.desc": "Alinhamos o que entra — e o que fica para depois — antes de construir.",
+    "ideals.2.title": "Negociação justa",
+    "ideals.2.desc": "Investimento conversado conforme necessidade, prazo e complexidade.",
+    "ideals.3.title": "Produto usável",
+    "ideals.3.desc": "Priorizamos telas e fluxos que a equipe consegue operar no dia a dia.",
+    "ideals.4.title": "Sociedade transparente",
+    "ideals.4.desc": "SudreScodeS e Dtech trabalham juntas — uma marca, duas frentes alinhadas.",
+    "works.title": "Trabalhos",
+    "works.lead": "Screenshots do que já entregamos — sem precisar abrir o sistema ao vivo.",
+    "works.railAria": "Navegar pelos tipos de trabalho",
     "section.sites.title": "Sites",
     "section.sites.desc": "Landings e sites institucionais — do simples ao com funcionalidades específicas.",
     "section.orders.title": "Sistema de pedidos / vendas",
@@ -32,11 +69,9 @@ const I18N = {
     "pricing.col.price": "Preço",
     "pricing.note": "Valores em reais. Em inglês, a tabela é exibida em dólares (faixas fixas).",
     "contact.title": "Vamos conversar",
-    "contact.sub": "Conte o que precisa. Alinhamos escopo, prazo e investimento \u2014 com flexibilidade para negociar conforme o projeto.",
+    "contact.sub": "Conte o que precisa. Alinhamos escopo, prazo e investimento — com flexibilidade para negociar conforme o projeto.",
     "contact.whatsapp": "Falar no WhatsApp",
-    "footer.note": "Portfólio para leads · Sem login nos sistemas",
-    "footer.dev": "Desenvolvido por",
-    "footer.devAria": "Desenvolvido por VS — abrir perfil do desenvolvedor",
+    "footer.note": "Marca da sociedade SudreScodeS e Dtech Labs",
     "carousel.prev": "Anterior",
     "carousel.next": "Próximo",
     "carousel.placeholder": "Screenshot em breve",
@@ -49,6 +84,10 @@ const I18N = {
     "theme.toLight": "Ativar modo claro",
   },
   en: {
+    "brand.name": "D&S core",
+    "nav.about": "About",
+    "nav.services": "What we do",
+    "nav.ideals": "Ideals",
     "nav.works": "Work",
     "nav.pricing": "Pricing",
     "nav.contact": "Contact",
@@ -57,10 +96,43 @@ const I18N = {
     "nav.erp": "ERP",
     "nav.scheduling": "Scheduling",
     "nav.custom": "Custom",
-    "hero.title": "Recent work",
-    "hero.sub": "See what we’ve shipped — through screenshots, without opening the live systems.",
+    "hero.headline": "Software and sites that run the day-to-day of your business",
+    "hero.sub": "A partnership between SudreScodeS and Dtech Labs — we ship clear, tailored digital products ready to use.",
+    "hero.ctaAbout": "Learn more",
     "hero.cta": "View work",
-    "hero.ctaPrices": "View pricing",
+    "about.title": "About",
+    "about.lead": "D&S core is the joint brand of the partnership between SudreScodeS and Dtech Labs.",
+    "about.body": "We combine product, engineering, and practical delivery to build sites and systems businesses actually use — with aligned scope, realistic timelines, and room to negotiate as needed.",
+    "about.partners": "Partners",
+    "about.partnerVs": "SudreScodeS",
+    "about.partnerDl": "Dtech Labs",
+    "about.partnerVsAria": "SudreScodeS — open profile",
+    "about.partnerDlAria": "Dtech Labs",
+    "services.title": "What we do",
+    "services.lead": "From institutional sites to bespoke systems — always focused on real use.",
+    "services.sites.title": "Sites",
+    "services.sites.desc": "Landings and institutional sites — from simple pages to feature-rich builds.",
+    "services.orders.title": "Orders & sales",
+    "services.orders.desc": "Menus, cart, checkout, payments, and an orders admin panel.",
+    "services.erp.title": "ERP / CRM",
+    "services.erp.desc": "Sales, inventory, finance, clients, reports, and analytics.",
+    "services.scheduling.title": "Scheduling",
+    "services.scheduling.desc": "Bookings, time slots, and calendar management for clinics, salons, and consultancies.",
+    "services.custom.title": "Custom",
+    "services.custom.desc": "Dashboards, AI, and workflows tailored to your business.",
+    "ideals.title": "Ideals",
+    "ideals.lead": "What guides how we design and deliver.",
+    "ideals.1.title": "Clear scope",
+    "ideals.1.desc": "We align what ships now — and what waits — before we build.",
+    "ideals.2.title": "Fair negotiation",
+    "ideals.2.desc": "Investment discussed against need, timeline, and complexity.",
+    "ideals.3.title": "Usable product",
+    "ideals.3.desc": "We prioritize screens and flows teams can run every day.",
+    "ideals.4.title": "Transparent partnership",
+    "ideals.4.desc": "SudreScodeS and Dtech work together — one brand, two aligned fronts.",
+    "works.title": "Work",
+    "works.lead": "Screenshots of what we’ve shipped — without opening the live systems.",
+    "works.railAria": "Browse work categories",
     "section.sites.title": "Sites",
     "section.sites.desc": "Landings and institutional sites — from simple pages to feature-rich builds.",
     "section.orders.title": "Orders & sales system",
@@ -76,12 +148,10 @@ const I18N = {
     "pricing.col.product": "Product",
     "pricing.col.price": "Price",
     "pricing.note": "Amounts in USD (fixed display ranges). Switch to PT for BRL.",
-    "contact.title": "Let\u2019s talk",
-    "contact.sub": "Tell us what you need. We\u2019ll align scope, timeline, and investment \u2014 with room to negotiate based on the project.",
+    "contact.title": "Let’s talk",
+    "contact.sub": "Tell us what you need. We’ll align scope, timeline, and investment — with room to negotiate based on the project.",
     "contact.whatsapp": "Chat on WhatsApp",
-    "footer.note": "Lead portfolio · No live system login required",
-    "footer.dev": "Developed by",
-    "footer.devAria": "Developed by VS — open developer profile",
+    "footer.note": "Joint brand of SudreScodeS and Dtech Labs",
     "carousel.prev": "Previous",
     "carousel.next": "Next",
     "carousel.placeholder": "Screenshot coming soon",
@@ -98,6 +168,11 @@ const I18N = {
 const LOCALE_KEY = "portfolio-locale";
 const THEME_KEY = "portfolio-theme";
 
+const LOGO_SRC = {
+  vs: { light: "assets/LogoC-VS.png", dark: "assets/LogoE-VS.png" },
+  dl: { light: "assets/LogoC-DL.png", dark: "assets/LogoE-DL.png" },
+};
+
 function getLocale() {
   const stored = localStorage.getItem(LOCALE_KEY);
   if (stored === "pt" || stored === "en") return stored;
@@ -110,6 +185,7 @@ function t(key, locale = getLocale()) {
 
 function applyI18n(locale) {
   document.documentElement.lang = locale === "en" ? "en" : "pt-BR";
+  document.title = t("brand.name", locale);
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     const value = t(key, locale);
@@ -145,13 +221,18 @@ function getTheme() {
   return "light";
 }
 
+function applyPartnerLogos(theme) {
+  const mode = theme === "dark" ? "dark" : "light";
+  document.querySelectorAll(".theme-logo[data-logo]").forEach((img) => {
+    const pair = LOGO_SRC[img.getAttribute("data-logo")];
+    if (pair) img.src = pair[mode];
+  });
+}
+
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
   updateThemeButtonLabel();
-  const logo = document.getElementById("footer-logo");
-  if (logo) {
-    logo.src = theme === "dark" ? "assets/LogoE-VS.png" : "assets/LogoC-VS.png";
-  }
+  applyPartnerLogos(theme);
 }
 
 function updateThemeButtonLabel() {
