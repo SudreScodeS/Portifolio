@@ -8,8 +8,9 @@
   <meta name="description"
     content="D&S core — sites e sistemas para o dia a dia do negócio. Sociedade entre SudreScodeS e Dtech Labs. PT/EN." />
   <meta name="theme-color" content="#1a1d21" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="assets/LogoC-DS-icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/LogoC-DS-icon.png" />
   <script>
     (function () {
       try {
@@ -21,6 +22,8 @@
         var map = {
           vs: { light: "assets/LogoC-VS.png", dark: "assets/LogoE-VS.png" },
           dl: { light: "assets/LogoC-DL.png", dark: "assets/LogoE-DL.png" },
+          ds: { light: "assets/LogoC-DS.svg", dark: "assets/LogoE-DS.svg" },
+          "ds-icon": { light: "assets/LogoC-DS-icon.svg", dark: "assets/LogoE-DS-icon.svg" },
         };
         document.addEventListener("DOMContentLoaded", function () {
           document.querySelectorAll(".theme-logo[data-logo]").forEach(function (img) {
@@ -42,7 +45,16 @@
 <body>
   <header class="site-nav" id="top">
     <div class="container">
-      <a class="nav-brand" href="#top" data-i18n="brand.name">D&amp;S core</a>
+      <a class="nav-brand" href="#top" data-i18n-aria="brand.name" aria-label="D&amp;S core">
+        <img
+          class="theme-logo nav-brand-logo"
+          data-logo="ds"
+          src="assets/LogoE-DS.svg"
+          alt=""
+          width="148"
+          height="40"
+        />
+      </a>
       <nav>
         <ul class="nav-links" id="nav-links">
           <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
@@ -82,7 +94,16 @@
   <main>
     <section class="hero">
       <div class="container hero-inner">
-        <p class="hero-brand" data-i18n="brand.name">D&amp;S core</p>
+        <div class="hero-brand">
+          <img
+            class="theme-logo hero-brand-logo"
+            data-logo="ds"
+            src="assets/LogoE-DS.svg"
+            alt="D&amp;S core"
+            width="420"
+            height="112"
+          />
+        </div>
         <h1 data-i18n="hero.headline">Software e sites que resolvem o dia a dia do negócio</h1>
         <p data-i18n="hero.sub">Sociedade entre SudreScodeS e Dtech Labs — entregamos produtos digitais claros, sob
           medida e prontos para usar.</p>
@@ -241,7 +262,14 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <strong data-i18n="brand.name">D&amp;S core</strong>
+        <img
+          class="theme-logo footer-brand-logo"
+          data-logo="ds"
+          src="assets/LogoE-DS.svg"
+          alt="D&amp;S core"
+          width="140"
+          height="38"
+        />
         <p data-i18n="footer.note">Marca da sociedade SudreScodeS e Dtech Labs</p>
       </div>
       <div class="footer-partners">

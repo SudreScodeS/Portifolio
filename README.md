@@ -15,15 +15,13 @@ index.html
 css/styles.css
 js/i18n.js          # strings PT/EN + locale + tema
 js/main.js          # slides, carrosséis, preços, contato
-assets/
-  LogoC-VS.png / LogoE-VS.png   # SudreScodeS (C=claro, E=escuro)
-  LogoC-DL.png / LogoE-DL.png   # Dtech Labs
-  screenshots/
-    sites/
-    pedidos/
-    erp/
-    agendamento/
-    personalizado/
+## Assets
+
+```
+LogoC-VS / LogoE-VS     SudreScodeS (C=claro, E=escuro)
+LogoC-DL / LogoE-DL     Dtech Labs
+LogoC-DS / LogoE-DS     D&S core lockup (+ -icon / .svg)
+favicon-32.png          favicon
 ```
 
 ## Seções
