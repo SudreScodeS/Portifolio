@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zdtecnologia.com.br/sitemap.xml

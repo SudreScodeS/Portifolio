@@ -5,6 +5,8 @@
 const I18N = {
   pt: {
     "brand.name": "D&S core",
+    "meta.title": "D&S core — Sites e sistemas para o seu negócio",
+    "meta.description": "D&S core: sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida. Sociedade entre SudreScodeS e Dtech Labs. PT/EN.",
     "nav.about": "Sobre",
     "nav.services": "O que fazemos",
     "nav.ideals": "Ideais",
@@ -85,6 +87,8 @@ const I18N = {
   },
   en: {
     "brand.name": "D&S core",
+    "meta.title": "D&S core — Sites and systems for your business",
+    "meta.description": "D&S core: websites, order systems, ERP/CRM, scheduling, and custom software. Partnership of SudreScodeS and Dtech Labs. PT/EN.",
     "nav.about": "About",
     "nav.services": "What we do",
     "nav.ideals": "Ideals",
@@ -187,7 +191,33 @@ function t(key, locale = getLocale()) {
 
 function applyI18n(locale) {
   document.documentElement.lang = locale === "en" ? "en" : "pt-BR";
-  document.title = t("brand.name", locale);
+  document.title = t("meta.title", locale);
+  const desc = document.querySelector('meta[name="description"]');
+  if (desc) desc.setAttribute("content", t("meta.description", locale));
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute("content", t("meta.title", locale));
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) {
+    ogDesc.setAttribute(
+      "content",
+      locale === "en"
+        ? "Websites, order systems, ERP/CRM, scheduling, and custom software. Partnership of SudreScodeS and Dtech Labs."
+        : "Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida. Sociedade entre SudreScodeS e Dtech Labs."
+    );
+  }
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  if (ogLocale) ogLocale.setAttribute("content", locale === "en" ? "en_US" : "pt_BR");
+  const twTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twTitle) twTitle.setAttribute("content", t("meta.title", locale));
+  const twDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twDesc) {
+    twDesc.setAttribute(
+      "content",
+      locale === "en"
+        ? "Websites, order systems, ERP/CRM, scheduling, and custom software. Partnership of SudreScodeS and Dtech Labs."
+        : "Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida. Sociedade entre SudreScodeS e Dtech Labs."
+    );
+  }
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     const value = t(key, locale);
