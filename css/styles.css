@@ -785,11 +785,13 @@ html[data-theme="dark"] .btn-ghost:hover {
 .works {
   scroll-margin-top: calc(var(--nav-h) + 16px);
   position: relative;
+  --works-rail-w: 7.25rem;
+  --works-rail-gap: 1rem;
 }
 
 .works-rail {
   position: fixed;
-  left: 14px;
+  left: max(12px, env(safe-area-inset-left, 0px));
   top: 50%;
   transform: translateY(calc(-50% + 8px));
   z-index: 35;
@@ -812,11 +814,11 @@ html[data-theme="dark"] .btn-ghost:hover {
 .works-rail-list {
   list-style: none;
   margin: 0;
-  padding: 10px 10px;
+  padding: 8px 8px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 8px;
+  gap: 6px;
   background: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -824,7 +826,7 @@ html[data-theme="dark"] .btn-ghost:hover {
   border-radius: 6px;
   box-shadow: 0 10px 28px rgba(18, 20, 23, 0.07);
   width: max-content;
-  max-width: none;
+  max-width: var(--works-rail-w);
   min-width: 0;
   box-sizing: border-box;
 }
@@ -859,8 +861,16 @@ html[data-theme="dark"] .works-rail-list {
   border-left-color: var(--ink);
 }
 
-/* Em telas médias a rail lateral invade o conteúdo — usa a barra inferior */
-@media (max-width: 1180px) {
+/* Desktop: reserva faixa à esquerda para a rail não cobrir os prints */
+@media (min-width: 1360px) {
+  body.works-rail-open #works {
+    padding-left: calc(var(--works-rail-w) + var(--works-rail-gap) + 12px);
+    transition: padding-left 0.28s var(--ease-soft);
+  }
+}
+
+/* Telas menores: barra inferior + folga no fim das seções */
+@media (max-width: 1359px) {
   .works-rail {
     left: 0;
     right: 0;
@@ -869,7 +879,7 @@ html[data-theme="dark"] .works-rail-list {
     transform: translateY(12px);
     display: flex;
     justify-content: center;
-    padding: 0 12px max(22px, calc(env(safe-area-inset-bottom, 0px) + 14px));
+    padding: 0 12px max(16px, calc(env(safe-area-inset-bottom, 0px) + 10px));
   }
 
   .works-rail.is-visible {
@@ -880,20 +890,26 @@ html[data-theme="dark"] .works-rail-list {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 4px;
-    padding: 8px 10px;
-    max-width: min(100%, 560px);
+    gap: 2px;
+    padding: 7px 8px;
+    max-width: min(100%, 520px);
+    width: auto;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     border-radius: 999px;
+    scrollbar-width: none;
+  }
+
+  .works-rail-list::-webkit-scrollbar {
+    display: none;
   }
 
   .works-rail-list a {
-    padding: 6px 10px;
+    padding: 6px 8px;
     border-left: none;
     border-bottom: 1px solid transparent;
     white-space: nowrap;
-    font-size: 0.625rem;
+    font-size: 0.6rem;
   }
 
   .works-rail-list a.is-active {
@@ -902,7 +918,26 @@ html[data-theme="dark"] .works-rail-list {
   }
 
   body.works-rail-open {
-    padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+    --works-rail-bottom-h: calc(52px + env(safe-area-inset-bottom, 0px) + 16px);
+    padding-bottom: var(--works-rail-bottom-h);
+  }
+
+  /* Encolhe o deck para a barra não cobrir o print */
+  body.works-rail-open #works-mount .coverflow {
+    height: min(38vh, 300px);
+    margin-bottom: 4px;
+  }
+
+  body.works-rail-open #works-mount .work-section {
+    padding-bottom: 56px;
+  }
+
+  body.works-rail-open #works-mount .work-section:last-child {
+    padding-bottom: 64px;
+  }
+
+  body.works-rail-open #works-mount .carousel-caption {
+    margin-bottom: 4px;
   }
 }
 
