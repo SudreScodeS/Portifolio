@@ -132,6 +132,8 @@
         }
         document.documentElement.setAttribute("data-theme", t);
         var map = {
+          vs: { light: "assets/LogoC-VS.png", dark: "assets/LogoE-VS.png" },
+          dl: { light: "assets/LogoC-DL.png", dark: "assets/LogoE-DL.png" },
           sudra: { light: "assets/sudra-lockup-light.svg", dark: "assets/sudra-lockup-dark.svg" },
           "sudra-icon": { light: "assets/sudra-icon-light.svg", dark: "assets/sudra-icon-dark.svg" },
         };
@@ -215,7 +217,7 @@
           />
         </div>
         <h1 data-i18n="hero.headline">Software e sites que resolvem o dia a dia do negócio</h1>
-        <p data-i18n="hero.sub">SUDRA Technologies. Produtos digitais claros, sob
+        <p data-i18n="hero.sub">Sociedade entre SudreScodeS e Dtech Labs. Produtos digitais claros, sob
           medida e prontos para o uso.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#about" data-i18n="hero.ctaAbout">Conhecer</a>
@@ -229,9 +231,26 @@
       <div class="container">
         <div class="section-head">
           <h2 data-i18n="about.title">Sobre</h2>
-          <p data-i18n="about.lead">A SUDRA é uma empresa de tecnologia focada em sites e sistemas que o negócio usa de fato.</p>
+          <p data-i18n="about.lead">A SUDRA é a marca da sociedade entre SudreScodeS e Dtech Labs.</p>
         </div>
         <p class="about-body" data-i18n="about.body">Unimos produto, engenharia e entrega prática. Construímos com escopo alinhado, prazo realista e espaço para negociar conforme a necessidade.</p>
+        <div class="partners">
+          <p class="partners-label" data-i18n="about.partners">Sócios</p>
+          <div class="partners-row">
+            <a class="partner" href="https://github.com/SudreScodeS" target="_blank" rel="noopener noreferrer"
+              data-i18n-aria="about.partnerVsAria" aria-label="SudreScodeS">
+              <img class="partner-logo theme-logo" data-logo="vs" src="assets/LogoE-VS.png" alt="SudreScodeS"
+                width="140" height="55" />
+              <span data-i18n="about.partnerVs">SudreScodeS</span>
+            </a>
+            <span class="partners-and" aria-hidden="true">·</span>
+            <a class="partner" href="#about" data-i18n-aria="about.partnerDlAria" aria-label="Dtech Labs">
+              <img class="partner-logo theme-logo" data-logo="dl" src="assets/LogoE-DL.png" alt="Dtech Labs" width="140"
+                height="55" />
+              <span data-i18n="about.partnerDl">Dtech Labs</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -288,8 +307,8 @@
             <p data-i18n="ideals.3.desc">Priorizamos telas e fluxos que a equipe consegue operar no dia a dia.</p>
           </article>
           <article class="ideal">
-            <h3 data-i18n="ideals.4.title">Entrega transparente</h3>
-            <p data-i18n="ideals.4.desc">Comunicamos progresso, riscos e decisões com clareza do primeiro alinhamento à entrega.</p>
+            <h3 data-i18n="ideals.4.title">Sociedade transparente</h3>
+            <p data-i18n="ideals.4.desc">SudreScodeS e Dtech trabalham juntas: uma marca, duas frentes alinhadas.</p>
           </article>
         </div>
       </div>
@@ -362,7 +381,16 @@
           width="140"
           height="46"
         />
-        <p data-i18n="footer.note">SUDRA Technologies</p>
+        <p data-i18n="footer.note">Marca da sociedade SudreScodeS e Dtech Labs</p>
+      </div>
+      <div class="footer-partners">
+        <a class="footer-partner" href="https://github.com/SudreScodeS" target="_blank" rel="noopener noreferrer"
+          data-i18n-aria="about.partnerVsAria" aria-label="SudreScodeS">
+          <img class="theme-logo" data-logo="vs" src="assets/LogoE-VS.png" alt="SudreScodeS" width="110" height="43" />
+        </a>
+        <a class="footer-partner" href="#about" data-i18n-aria="about.partnerDlAria" aria-label="Dtech Labs">
+          <img class="theme-logo" data-logo="dl" src="assets/LogoE-DL.png" alt="Dtech Labs" width="110" height="43" />
+        </a>
       </div>
     </div>
   </footer>
