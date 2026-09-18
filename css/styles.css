@@ -778,7 +778,23 @@ html[data-theme="dark"] .btn-ghost:hover {
 
 .works-head {
   padding-top: 72px;
-  margin-bottom: 28px;
+  margin-bottom: 36px;
+}
+
+.works-head h2 {
+  font-size: clamp(2rem, 4.2vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 0.55rem;
+  color: var(--text-primary);
+}
+
+.works-head p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 36rem;
 }
 
 /* —— Works side rail —— */
@@ -943,10 +959,36 @@ html[data-theme="dark"] .works-rail-list {
 
 /* —— Work sections —— */
 .work-section {
-  padding: 72px 0 40px;
+  padding: 56px 0 40px;
   overflow-x: clip;
   overflow-y: visible;
   scroll-margin-top: calc(var(--nav-h) + 28px);
+}
+
+#works-mount .work-section:first-child {
+  padding-top: 20px;
+}
+
+.work-section .section-head {
+  margin-bottom: 22px;
+}
+
+.work-section .section-head h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+  color: var(--text-primary);
+}
+
+.work-section .section-head p {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 40rem;
+  margin: 0;
 }
 
 #works-mount {

@@ -374,11 +374,11 @@
       section.id +
       '" data-section="' +
       section.id +
-      '"><div class="container section-head"><h2 data-i18n="' +
+      '"><div class="container section-head"><h3 data-i18n="' +
       section.titleKey +
       '">' +
       escapeHtml(t(section.titleKey)) +
-      '</h2><p data-i18n="' +
+      '</h3><p data-i18n="' +
       section.descKey +
       '">' +
       escapeHtml(t(section.descKey)) +
@@ -916,7 +916,8 @@
     const focusEl =
       id === "works"
         ? target.querySelector(".works-head") || target
-        : target.querySelector(".section-head h2") ||
+        : target.querySelector(".section-head h3") ||
+          target.querySelector(".section-head h2") ||
           target.querySelector(".section-head") ||
           target;
 
