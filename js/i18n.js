@@ -4,9 +4,9 @@
  */
 const I18N = {
   pt: {
-    "brand.name": "D&S core",
-    "meta.title": "D&S core | Sites e sistemas para o seu negócio",
-    "meta.description": "D&S core: sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida. Sociedade entre SudreScodeS e Dtech Labs. PT/EN.",
+    "brand.name": "SUDRA",
+    "meta.title": "SUDRA | Sites e sistemas para o seu negócio",
+    "meta.description": "SUDRA Technologies: sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida. PT/EN.",
     "nav.about": "Sobre",
     "nav.services": "O que fazemos",
     "nav.ideals": "Ideais",
@@ -19,17 +19,12 @@ const I18N = {
     "nav.scheduling": "Agendamento",
     "nav.custom": "Personalizado",
     "hero.headline": "Software e sites que resolvem o dia a dia do negócio",
-    "hero.sub": "Sociedade entre SudreScodeS e Dtech Labs. Produtos digitais claros, sob medida e prontos para o uso.",
+    "hero.sub": "SUDRA Technologies. Produtos digitais claros, sob medida e prontos para o uso.",
     "hero.ctaAbout": "Conhecer",
     "hero.cta": "Ver trabalhos",
     "about.title": "Sobre",
-    "about.lead": "A D&S core é a marca conjunta da sociedade entre SudreScodeS e Dtech Labs.",
-    "about.body": "Unimos produto, engenharia e entrega prática. Construímos sites e sistemas que o negócio usa de fato, com escopo alinhado, prazo realista e espaço para negociar conforme a necessidade.",
-    "about.partners": "Sócios",
-    "about.partnerVs": "SudreScodeS",
-    "about.partnerDl": "Dtech Labs",
-    "about.partnerVsAria": "SudreScodeS, abrir perfil",
-    "about.partnerDlAria": "Dtech Labs",
+    "about.lead": "A SUDRA é uma empresa de tecnologia focada em sites e sistemas que o negócio usa de fato.",
+    "about.body": "Unimos produto, engenharia e entrega prática. Construímos com escopo alinhado, prazo realista e espaço para negociar conforme a necessidade.",
     "services.title": "O que fazemos",
     "services.lead": "Do site institucional ao sistema sob medida, com foco no uso real.",
     "services.sites.title": "Sites",
@@ -50,8 +45,8 @@ const I18N = {
     "ideals.2.desc": "Investimento conversado conforme necessidade, prazo e complexidade.",
     "ideals.3.title": "Produto usável",
     "ideals.3.desc": "Priorizamos telas e fluxos que a equipe consegue operar no dia a dia.",
-    "ideals.4.title": "Sociedade transparente",
-    "ideals.4.desc": "SudreScodeS e Dtech trabalham juntas: uma marca, duas frentes alinhadas.",
+    "ideals.4.title": "Entrega transparente",
+    "ideals.4.desc": "Comunicamos progresso, riscos e decisões com clareza do primeiro alinhamento à entrega.",
     "works.title": "Trabalhos",
     "works.lead": "Screenshots do que já entregamos — sem precisar abrir o sistema ao vivo.",
     "works.railAria": "Navegar pelos tipos de trabalho",
@@ -73,7 +68,8 @@ const I18N = {
     "contact.title": "Vamos conversar",
     "contact.sub": "Conte o que precisa. Alinhamos escopo, prazo e investimento, com flexibilidade para negociar conforme o projeto.",
     "contact.whatsapp": "Falar no WhatsApp",
-    "footer.note": "Marca da sociedade SudreScodeS e Dtech Labs",
+    "contact.email": "E-mail",
+    "footer.note": "SUDRA Technologies",
     "carousel.prev": "Anterior",
     "carousel.next": "Próximo",
     "carousel.placeholder": "Screenshot em breve",
@@ -86,9 +82,9 @@ const I18N = {
     "theme.toLight": "Ativar modo claro",
   },
   en: {
-    "brand.name": "D&S core",
-    "meta.title": "D&S core | Sites and systems for your business",
-    "meta.description": "D&S core: websites, order systems, ERP/CRM, scheduling, and custom software. Partnership of SudreScodeS and Dtech Labs. PT/EN.",
+    "brand.name": "SUDRA",
+    "meta.title": "SUDRA | Sites and systems for your business",
+    "meta.description": "SUDRA Technologies: websites, order systems, ERP/CRM, scheduling, and custom software. PT/EN.",
     "nav.about": "About",
     "nav.services": "What we do",
     "nav.ideals": "Ideals",
@@ -101,17 +97,12 @@ const I18N = {
     "nav.scheduling": "Scheduling",
     "nav.custom": "Custom",
     "hero.headline": "Software and sites that run the day-to-day of your business",
-    "hero.sub": "A partnership between SudreScodeS and Dtech Labs. Clear digital products, tailored and ready to use.",
+    "hero.sub": "SUDRA Technologies. Clear digital products, tailored and ready to use.",
     "hero.ctaAbout": "Learn more",
     "hero.cta": "View work",
     "about.title": "About",
-    "about.lead": "D&S core is the joint brand of the partnership between SudreScodeS and Dtech Labs.",
-    "about.body": "We combine product, engineering, and practical delivery. We build sites and systems businesses actually use, with aligned scope, realistic timelines, and room to negotiate as needed.",
-    "about.partners": "Partners",
-    "about.partnerVs": "SudreScodeS",
-    "about.partnerDl": "Dtech Labs",
-    "about.partnerVsAria": "SudreScodeS, open profile",
-    "about.partnerDlAria": "Dtech Labs",
+    "about.lead": "SUDRA is a technology company focused on sites and systems businesses actually use.",
+    "about.body": "We combine product, engineering, and practical delivery. We build with aligned scope, realistic timelines, and room to negotiate as needed.",
     "services.title": "What we do",
     "services.lead": "From institutional sites to bespoke systems, always focused on real use.",
     "services.sites.title": "Sites",
@@ -132,8 +123,8 @@ const I18N = {
     "ideals.2.desc": "Investment discussed against need, timeline, and complexity.",
     "ideals.3.title": "Usable product",
     "ideals.3.desc": "We prioritize screens and flows teams can run every day.",
-    "ideals.4.title": "Transparent partnership",
-    "ideals.4.desc": "SudreScodeS and Dtech work together: one brand, two aligned fronts.",
+    "ideals.4.title": "Transparent delivery",
+    "ideals.4.desc": "We communicate progress, risks, and decisions clearly from the first alignment to handoff.",
     "works.title": "Work",
     "works.lead": "Screenshots of what we’ve shipped — without opening the live systems.",
     "works.railAria": "Browse work categories",
@@ -155,7 +146,8 @@ const I18N = {
     "contact.title": "Let’s talk",
     "contact.sub": "Tell us what you need. We’ll align scope, timeline, and investment, with room to negotiate based on the project.",
     "contact.whatsapp": "Chat on WhatsApp",
-    "footer.note": "Joint brand of SudreScodeS and Dtech Labs",
+    "contact.email": "Email",
+    "footer.note": "SUDRA Technologies",
     "carousel.prev": "Previous",
     "carousel.next": "Next",
     "carousel.placeholder": "Screenshot coming soon",
@@ -173,10 +165,8 @@ const LOCALE_KEY = "portfolio-locale";
 const THEME_KEY = "portfolio-theme";
 
 const LOGO_SRC = {
-  vs: { light: "assets/LogoC-VS.png", dark: "assets/LogoE-VS.png" },
-  dl: { light: "assets/LogoC-DL.png", dark: "assets/LogoE-DL.png" },
-  ds: { light: "assets/sudra-lockup-light.svg", dark: "assets/sudra-lockup-dark.svg" },
-  "ds-icon": { light: "assets/sudra-icon-light.svg", dark: "assets/sudra-icon-dark.svg" },
+  sudra: { light: "assets/sudra-lockup-light.svg", dark: "assets/sudra-lockup-dark.svg" },
+  "sudra-icon": { light: "assets/sudra-icon-light.svg", dark: "assets/sudra-icon-dark.svg" },
 };
 
 function getLocale() {
@@ -196,13 +186,15 @@ function applyI18n(locale) {
   if (desc) desc.setAttribute("content", t("meta.description", locale));
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute("content", t("meta.title", locale));
+  const ogSite = document.querySelector('meta[property="og:site_name"]');
+  if (ogSite) ogSite.setAttribute("content", t("brand.name", locale));
   const ogDesc = document.querySelector('meta[property="og:description"]');
   if (ogDesc) {
     ogDesc.setAttribute(
       "content",
       locale === "en"
-        ? "Websites, order systems, ERP/CRM, scheduling, and custom software. Partnership of SudreScodeS and Dtech Labs."
-        : "Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida. Sociedade entre SudreScodeS e Dtech Labs."
+        ? "Websites, order systems, ERP/CRM, scheduling, and custom software by SUDRA Technologies."
+        : "Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida pela SUDRA Technologies."
     );
   }
   const ogLocale = document.querySelector('meta[property="og:locale"]');
@@ -214,8 +206,8 @@ function applyI18n(locale) {
     twDesc.setAttribute(
       "content",
       locale === "en"
-        ? "Websites, order systems, ERP/CRM, scheduling, and custom software. Partnership of SudreScodeS and Dtech Labs."
-        : "Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida. Sociedade entre SudreScodeS e Dtech Labs."
+        ? "Websites, order systems, ERP/CRM, scheduling, and custom software by SUDRA Technologies."
+        : "Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida pela SUDRA Technologies."
     );
   }
   document.querySelectorAll("[data-i18n]").forEach((el) => {

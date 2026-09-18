@@ -1,4 +1,4 @@
-/* Portfolio — static, brandless, PT/EN */
+/* SUDRA Technologies — site institucional PT/EN */
 
 *,
 *::before,
@@ -9,96 +9,122 @@
 }
 
 :root {
-  /* ---- SUDRA — cores da marca ---- */
-  --sudra-bordo: #6c273a;
-  --sudra-bordo-600: #5e1f31;
-  --sudra-bordo-700: #4a1927;
-  --sudra-bordo-400: #bb4465;
-  --sudra-bordo-300: #d9a3b2;
-  --sudra-bordo-50: #f8f4f5;
-  --sudra-dourado: #c3914b;
-  --sudra-dourado-400: #cca266;
-  --sudra-dourado-700: #92682d;
+  /* Guia de marca v1.0 — tokens */
+  --font-sans: "Work Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius: 5px;
 
-  /* ---- tokens semânticos (modo claro) ---- */
-  --ink: #16131a;
-  --ink-soft: #3f3437;
-  --fog: #f2f0f1;
-  --mist: #d1c7ca;
-  --paper: #faf8f7;
-  --muted: #806b70;
-  --accent: #6c273a;
-  --accent-bright: #8a3349;
-  --accent-glow: rgba(108, 39, 58, 0.1);
-  --accent-gold: #c3914b;
-  --accent-gold-text: #92682d;
+  --sudra-bordo: #6c273a;
+  --sudra-dourado: #c3914b;
+
+  --bg-base: #faf8f7;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f8f4f5;
+  --border: #e7e2e3;
+  --border-strong: #d1c7ca;
+  --text-primary: #16131a;
+  --text-secondary: #806b70;
+  --brand: #6c273a;
+  --brand-hover: #5e1f31;
+  --brand-pressed: #4a1927;
   --brand-on: #ffffff;
   --focus-ring: #bb4465;
-  --line: rgba(22, 19, 26, 0.1);
-  --frame: #e7e2e3;
+  --accent-gold: #c3914b;
+  --accent-text: #92682d;
+  --success: #1e7a5a;
+  --warning: #a96a12;
+  --danger: #b32424;
+  --info: #2a5ca8;
+
+  /* Aliases dos componentes (accent = tinta da marca na UI) */
+  --ink: var(--text-primary);
+  --ink-soft: #3f3437;
+  --fog: #f2f0f1;
+  --mist: var(--border-strong);
+  --paper: var(--bg-base);
+  --muted: var(--text-secondary);
+  --accent: var(--brand);
+  --accent-bright: var(--brand-hover);
+  --accent-glow: rgba(108, 39, 58, 0.1);
+  --accent-gold-text: var(--accent-text);
+  --line: var(--border);
+  --frame: var(--border);
   --frame-grad: linear-gradient(160deg, #f6f3f4 0%, #ece6e8 55%, #e4dcde 100%);
   --frame-dash: rgba(108, 39, 58, 0.16);
   --caption-bg: #16131a;
   --caption-fg: #faf8f7;
-  --nav-bg: rgba(250, 248, 247, 0.9);
-  --surface: rgba(255, 255, 255, 0.74);
-  --surface-solid: #ffffff;
-  --lang-bg: rgba(255, 255, 255, 0.72);
+  --nav-bg: rgba(250, 248, 247, 0.94);
+  --surface: rgba(255, 255, 255, 0.86);
+  --surface-solid: var(--bg-surface);
+  --lang-bg: rgba(255, 255, 255, 0.8);
   --slide-bg: #f0eced;
-  --card-bg: #ffffff;
-  --radius: 5px;
-  --font-display: "Work Sans", system-ui, sans-serif;
-  --font-body: "Work Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  --card-bg: var(--bg-surface);
+  --font-display: var(--font-sans);
+  --font-body: var(--font-sans);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 0.38s;
+  --dur-fast: 0.12s;
   --dur: 0.55s;
   --dur-slow: 0.95s;
   --nav-h: 64px;
-  --body-grad: radial-gradient(ellipse 80% 55% at 8% -8%, rgba(108, 39, 58, 0.08), transparent 55%),
-    radial-gradient(ellipse 60% 45% at 100% 15%, rgba(195, 145, 75, 0.07), transparent 50%),
+  --body-grad: radial-gradient(ellipse 80% 55% at 8% -8%, rgba(108, 39, 58, 0.07), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 100% 15%, rgba(195, 145, 75, 0.06), transparent 50%),
     linear-gradient(180deg, #fdfbfa 0%, #faf8f7 42%, #f2eeef 100%);
-  --noise-opacity: 0.2;
+  --noise-opacity: 0.18;
   --noise-blend: multiply;
-  --btn-shadow: rgba(108, 39, 58, 0.16);
-  --btn-shadow-hover: rgba(108, 39, 58, 0.26);
+  --btn-shadow: 0 2px 8px rgba(108, 39, 58, 0.18);
 }
 
 html[data-theme="dark"] {
-  --ink: #f5f0f2;
-  --ink-soft: #cdc2c7;
-  --fog: #16131a;
-  --mist: #4e434f;
-  --paper: #16131a;
-  --muted: #9e9097;
-  --accent: #bb4465;
-  --accent-bright: #c9587a;
-  --accent-glow: rgba(187, 68, 101, 0.16);
-  --accent-gold: #cca266;
-  --accent-gold-text: #cca266;
+  --bg-base: #16131a;
+  --bg-surface: #1f1a22;
+  --bg-subtle: #2a232d;
+  --border: #3a313e;
+  --border-strong: #4e434f;
+  --text-primary: #f5f0f2;
+  --text-secondary: #b3a7ac;
+  --brand: #bb4465;
+  --brand-hover: #c9587a;
+  --brand-pressed: #a63a57;
   --brand-on: #ffffff;
+  --brand-text: #d9a3b2;
   --focus-ring: #d9a3b2;
-  --line: rgba(245, 240, 242, 0.12);
+  --accent-gold: #cca266;
+  --accent-text: #cca266;
+  --success: #4fbf95;
+  --warning: #e0a54a;
+  --danger: #e76a6a;
+  --info: #6fa4e8;
+
+  --ink: var(--text-primary);
+  --ink-soft: #cdc2c7;
+  --fog: var(--bg-base);
+  --mist: var(--border-strong);
+  --paper: var(--bg-base);
+  --muted: var(--text-secondary);
+  --accent: var(--brand);
+  --accent-bright: var(--brand-hover);
+  --accent-glow: rgba(187, 68, 101, 0.16);
+  --accent-gold-text: var(--accent-text);
+  --line: var(--border);
   --frame: #221c27;
   --frame-grad: linear-gradient(160deg, #2a232d 0%, #211b26 55%, #1a151f 100%);
   --frame-dash: rgba(217, 163, 178, 0.2);
   --caption-bg: #0f0d12;
   --caption-fg: #f5f0f2;
-  --nav-bg: rgba(22, 19, 26, 0.9);
-  --surface: rgba(31, 26, 34, 0.8);
-  --surface-solid: #1f1a22;
-  --lang-bg: rgba(31, 26, 34, 0.85);
+  --nav-bg: rgba(22, 19, 26, 0.94);
+  --surface: rgba(31, 26, 34, 0.88);
+  --surface-solid: var(--bg-surface);
+  --lang-bg: rgba(31, 26, 34, 0.9);
   --slide-bg: #1f1a22;
-  --card-bg: #1f1a22;
+  --card-bg: var(--bg-surface);
   --body-grad: radial-gradient(ellipse 80% 55% at 10% -10%, rgba(187, 68, 101, 0.1), transparent 52%),
     radial-gradient(ellipse 55% 40% at 100% 25%, rgba(0, 0, 0, 0.4), transparent 55%),
     linear-gradient(180deg, #1b1620 0%, #16131a 45%, #110e14 100%);
   --noise-opacity: 0.12;
   --noise-blend: soft-light;
-  --btn-shadow: rgba(0, 0, 0, 0.32);
-  --btn-shadow-hover: rgba(0, 0, 0, 0.45);
+  --btn-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }
 
@@ -432,13 +458,13 @@ html[data-theme="dark"] .theme-btn .icon-moon {
 
 .hero h1 {
   font-family: var(--font-display);
-  font-weight: 550;
+  font-weight: 700;
   font-size: clamp(1.55rem, 3.2vw, 2.15rem);
   line-height: 1.2;
   letter-spacing: -0.025em;
   margin-bottom: 1rem;
   max-width: 28ch;
-  color: var(--ink-soft);
+  color: var(--ink);
   animation: none;
 }
 
@@ -461,52 +487,86 @@ html[data-theme="dark"] .theme-btn .icon-moon {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 22px;
-  font-family: inherit;
+  min-height: 40px;
+  padding: 0 20px;
+  font-family: var(--font-sans);
   font-size: 0.9375rem;
   font-weight: 600;
+  letter-spacing: 0;
   text-decoration: none;
   border-radius: var(--radius);
   border: 1px solid transparent;
   cursor: pointer;
   transition:
-    transform var(--dur-fast) var(--ease-out),
-    background var(--dur-fast) var(--ease-soft),
-    border-color var(--dur-fast) var(--ease-soft),
-    color var(--dur-fast) var(--ease-soft),
-    box-shadow var(--dur-fast) var(--ease-soft);
+    transform 120ms var(--ease-soft),
+    background 120ms var(--ease-soft),
+    border-color 120ms var(--ease-soft),
+    color 120ms var(--ease-soft),
+    box-shadow 120ms var(--ease-soft);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  transform: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--brand);
   color: var(--brand-on);
   box-shadow: none;
 }
 
 .btn-primary:hover {
-  background: var(--accent-bright);
+  background: var(--brand-hover);
+  box-shadow: var(--btn-shadow);
+}
+
+.btn-primary:active {
+  background: var(--brand-pressed);
   box-shadow: none;
 }
 
 .btn-ghost {
   background: transparent;
-  border-color: var(--line);
-  color: var(--ink);
+  border-color: var(--brand);
+  color: var(--brand);
 }
 
 .btn-ghost:hover {
-  border-color: var(--ink);
+  border-color: var(--brand-hover);
+  color: var(--brand-hover);
+  background: var(--bg-subtle);
+}
+
+html[data-theme="dark"] .btn-ghost {
+  color: var(--brand-text);
+  border-color: var(--brand);
+}
+
+html[data-theme="dark"] .btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--brand-hover);
+  background: var(--bg-subtle);
+}
+
+.hero-actions .btn {
+  min-height: 48px;
+  padding: 0 22px;
 }
 
 .hero-rule {
   margin-top: 4.5rem;
   height: 2px;
   width: min(280px, 60%);
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-gold) 55%, transparent 100%);
+  background: linear-gradient(90deg, var(--brand) 0%, var(--accent-gold) 55%, transparent 100%);
   transform-origin: left;
   animation: growRule var(--dur-slow) var(--ease-out) 0.45s both;
 }
@@ -688,8 +748,8 @@ html[data-theme="dark"] .theme-btn .icon-moon {
 .ideal h3 {
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 2.2vw, 1.7rem);
-  font-weight: 550;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   line-height: 1.15;
   margin-bottom: 0.5rem;
   color: var(--ink);
@@ -868,9 +928,10 @@ html[data-theme="dark"] .works-rail-list {
 .section-head h2 {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 3.5vw, 2.35rem);
-  font-weight: 550;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   margin-bottom: 0.45rem;
+  color: var(--text-primary);
 }
 
 .section-head p {
@@ -1564,10 +1625,11 @@ main {
 }
 
 .pricing-table td:last-child {
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
-  color: var(--accent);
+  color: var(--brand);
 }
 
 .pricing-note {
@@ -1599,7 +1661,7 @@ main {
 .footer-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 24px;
   flex-wrap: wrap;
 }
