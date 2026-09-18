@@ -175,8 +175,8 @@ const THEME_KEY = "portfolio-theme";
 const LOGO_SRC = {
   vs: { light: "assets/LogoC-VS.png", dark: "assets/LogoE-VS.png" },
   dl: { light: "assets/LogoC-DL.png", dark: "assets/LogoE-DL.png" },
-  ds: { light: "assets/LogoC-DS.svg", dark: "assets/LogoE-DS.svg" },
-  "ds-icon": { light: "assets/LogoC-DS-icon.svg", dark: "assets/LogoE-DS-icon.svg" },
+  ds: { light: "assets/sudra-lockup-light.svg", dark: "assets/sudra-lockup-dark.svg" },
+  "ds-icon": { light: "assets/sudra-icon-light.svg", dark: "assets/sudra-icon-dark.svg" },
 };
 
 function getLocale() {
