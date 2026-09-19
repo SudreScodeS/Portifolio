@@ -877,15 +877,14 @@ html[data-theme="dark"] .works-rail-list {
   border-left-color: var(--ink);
 }
 
-/* Desktop: reserva faixa à esquerda para a rail não cobrir os prints */
+/* Desktop: reserva permanente na faixa de Trabalhos (sem toggle = sem jump) */
 @media (min-width: 1360px) {
-  body.works-rail-open #works {
+  #works {
     padding-left: calc(var(--works-rail-w) + var(--works-rail-gap) + 12px);
-    transition: padding-left 0.28s var(--ease-soft);
   }
 }
 
-/* Telas menores: barra inferior + folga no fim das seções */
+/* Telas menores: barra inferior + folga estática (não depende de .works-rail-open) */
 @media (max-width: 1359px) {
   .works-rail {
     left: 0;
@@ -933,27 +932,13 @@ html[data-theme="dark"] .works-rail-list {
     border-bottom-color: var(--ink);
   }
 
-  body.works-rail-open {
-    --works-rail-bottom-h: calc(52px + env(safe-area-inset-bottom, 0px) + 16px);
-    padding-bottom: var(--works-rail-bottom-h);
+  /* Folga fixa: evita reflow ao mostrar/esconder a rail (PlanAI ↔ Preços) */
+  #works-mount .coverflow {
+    height: min(40vh, 320px);
   }
 
-  /* Encolhe o deck para a barra não cobrir o print */
-  body.works-rail-open #works-mount .coverflow {
-    height: min(38vh, 300px);
-    margin-bottom: 4px;
-  }
-
-  body.works-rail-open #works-mount .work-section {
-    padding-bottom: 56px;
-  }
-
-  body.works-rail-open #works-mount .work-section:last-child {
-    padding-bottom: 64px;
-  }
-
-  body.works-rail-open #works-mount .carousel-caption {
-    margin-bottom: 4px;
+  #works-mount .work-section:last-child {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
   }
 }
 

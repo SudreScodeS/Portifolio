@@ -965,7 +965,14 @@
       document.querySelectorAll("#works-mount .work-section")
     );
 
+    // Histerese: evita liga/desliga em loop na borda Trabalhos ↔ Preços
+    const SHOW_AT = 0.52;
+    const HIDE_AT = 0.32;
+    let railOpen = false;
+
     function setVisible(on) {
+      if (railOpen === on) return;
+      railOpen = on;
       rail.classList.toggle("is-visible", on);
       rail.setAttribute("aria-hidden", on ? "false" : "true");
       document.body.classList.toggle("works-rail-open", on);
@@ -986,12 +993,13 @@
     }
 
     function updateVisibility() {
-      // Só mostra quando Trabalhos ocupa boa parte da tela — some ao entrar em Preços/etc.
-      setVisible(worksViewportRatio() >= 0.55);
+      const ratio = worksViewportRatio();
+      if (!railOpen && ratio >= SHOW_AT) setVisible(true);
+      else if (railOpen && ratio <= HIDE_AT) setVisible(false);
     }
 
     function updateActive() {
-      if (!rail.classList.contains("is-visible") || !sections.length) return;
+      if (!railOpen || !sections.length) return;
       const marker = window.innerHeight * 0.38;
       let current = sections[0].id;
       for (let i = 0; i < sections.length; i++) {
