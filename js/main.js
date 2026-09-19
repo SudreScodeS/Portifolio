@@ -958,6 +958,7 @@
   function initWorksRail() {
     const rail = document.getElementById("works-rail");
     const works = document.getElementById("works");
+    const pricing = document.getElementById("pricing");
     if (!rail || !works) return;
 
     const links = Array.prototype.slice.call(rail.querySelectorAll("[data-rail]"));
@@ -965,17 +966,18 @@
       document.querySelectorAll("#works-mount .work-section")
     );
 
-    // Histerese: evita liga/desliga em loop na borda Trabalhos ↔ Preços
-    const SHOW_AT = 0.52;
-    const HIDE_AT = 0.32;
+    // Histerese + corte antecipado ao chegar em Preços (evita jump visual)
+    const SHOW_AT = 0.55;
+    const HIDE_AT = 0.4;
+    const PRICING_CUTOFF = 0.72; // some a rail assim que Preços entra no terço inferior
     let railOpen = false;
+    let raf = 0;
 
     function setVisible(on) {
       if (railOpen === on) return;
       railOpen = on;
       rail.classList.toggle("is-visible", on);
       rail.setAttribute("aria-hidden", on ? "false" : "true");
-      document.body.classList.toggle("works-rail-open", on);
     }
 
     function setActive(id) {
@@ -992,7 +994,17 @@
       return visible / Math.max(1, window.innerHeight);
     }
 
+    function pricingIsApproaching() {
+      if (!pricing) return false;
+      return pricing.getBoundingClientRect().top < window.innerHeight * PRICING_CUTOFF;
+    }
+
     function updateVisibility() {
+      // Prioridade: se Preços já entrou na área útil, some a rail imediatamente
+      if (pricingIsApproaching()) {
+        setVisible(false);
+        return;
+      }
       const ratio = worksViewportRatio();
       if (!railOpen && ratio >= SHOW_AT) setVisible(true);
       else if (railOpen && ratio <= HIDE_AT) setVisible(false);
@@ -1010,8 +1022,12 @@
     }
 
     function onScroll() {
-      updateVisibility();
-      updateActive();
+      if (raf) return;
+      raf = window.requestAnimationFrame(function () {
+        raf = 0;
+        updateVisibility();
+        updateActive();
+      });
     }
 
     updateVisibility();

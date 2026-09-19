@@ -803,6 +803,7 @@ html[data-theme="dark"] .btn-ghost:hover {
   position: relative;
   --works-rail-w: 7.25rem;
   --works-rail-gap: 1rem;
+  overflow-anchor: none;
 }
 
 .works-rail {
@@ -877,15 +878,15 @@ html[data-theme="dark"] .works-rail-list {
   border-left-color: var(--ink);
 }
 
-/* Desktop: reserva permanente na faixa de Trabalhos (sem toggle = sem jump) */
-@media (min-width: 1360px) {
-  #works {
-    padding-left: calc(var(--works-rail-w) + var(--works-rail-gap) + 12px);
+/* Desktop largo: rail na margem, SEM empurrar o conteúdo (evita jump em Preços) */
+@media (min-width: 1400px) {
+  .works-rail {
+    left: max(12px, env(safe-area-inset-left, 0px));
   }
 }
 
-/* Telas menores: barra inferior + folga estática (não depende de .works-rail-open) */
-@media (max-width: 1359px) {
+/* Abaixo disso: barra inferior + folga estática */
+@media (max-width: 1399px) {
   .works-rail {
     left: 0;
     right: 0;
@@ -932,13 +933,12 @@ html[data-theme="dark"] .works-rail-list {
     border-bottom-color: var(--ink);
   }
 
-  /* Folga fixa: evita reflow ao mostrar/esconder a rail (PlanAI ↔ Preços) */
   #works-mount .coverflow {
     height: min(40vh, 320px);
   }
 
   #works-mount .work-section:last-child {
-    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -1639,6 +1639,7 @@ body.lightbox-open {
 /* —— Pricing —— */
 .pricing {
   padding: 88px 0 64px;
+  overflow-anchor: none;
 }
 
 .pricing .section-head {
