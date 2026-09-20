@@ -34,10 +34,10 @@
     property="og:description"
     content="Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida pela SUDRA Technologies."
   />
-  <meta property="og:image" content="https://zdtecnologia.com.br/assets/sudra-lockup-dark-1200.png" />
+  <meta property="og:image" content="https://zdtecnologia.com.br/assets/og-image.png" />
   <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="400" />
+  <meta property="og:image:width" content="1280" />
+  <meta property="og:image:height" content="720" />
   <meta property="og:image:alt" content="SUDRA Technologies" />
 
   <!-- Twitter -->
@@ -47,28 +47,32 @@
     name="twitter:description"
     content="Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida pela SUDRA Technologies."
   />
-  <meta name="twitter:image" content="https://zdtecnologia.com.br/assets/sudra-lockup-dark-1200.png" />
+  <meta name="twitter:image" content="https://zdtecnologia.com.br/assets/og-image.png" />
   <meta name="twitter:image:alt" content="SUDRA Technologies" />
 
   <link rel="icon" href="assets/sudra-icon-light.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="alternate" type="text/plain" href="https://zdtecnologia.com.br/llms.txt" title="LLM context" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": ["Organization", "ProfessionalService"],
         "@id": "https://zdtecnologia.com.br/#organization",
         "name": "SUDRA",
         "legalName": "SUDRA Technologies",
         "url": "https://zdtecnologia.com.br/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://zdtecnologia.com.br/assets/sudra-lockup-dark-1200.png"
+          "url": "https://zdtecnologia.com.br/assets/sudra-lockup-dark-1200.png",
+          "width": 1200,
+          "height": 395
         },
-        "description": "Sites e sistemas para o dia a dia do negócio.",
+        "image": "https://zdtecnologia.com.br/assets/og-image.png",
+        "description": "Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida para o dia a dia do negócio.",
         "email": "contato@sudra.com.br",
         "foundingDate": "2024",
         "sameAs": [
@@ -81,7 +85,10 @@
           "availableLanguage": ["Portuguese", "English"],
           "url": "https://wa.me/5511999783889"
         },
-        "areaServed": "BR",
+        "areaServed": {
+          "@type": "Country",
+          "name": "Brazil"
+        },
         "knowsAbout": [
           "Web development",
           "Custom software",
@@ -89,6 +96,84 @@
           "CRM",
           "Scheduling systems",
           "E-commerce ordering systems"
+        ],
+        "hasOfferCatalog": {
+          "@id": "https://zdtecnologia.com.br/#offer-catalog"
+        }
+      },
+      {
+        "@type": "OfferCatalog",
+        "@id": "https://zdtecnologia.com.br/#offer-catalog",
+        "name": "Serviços SUDRA",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sites e landings",
+              "description": "Landings e sites institucionais, do simples ao com funcionalidades específicas."
+            },
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 600,
+              "maxPrice": 5000,
+              "priceCurrency": "BRL"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sistema de pedidos e vendas",
+              "description": "Cardápio, carrinho, checkout, pagamentos e painel de pedidos."
+            },
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 3000,
+              "maxPrice": 8000,
+              "priceCurrency": "BRL"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "ERP / CRM",
+              "description": "Vendas, estoque, financeiro, clientes, relatórios e analytics."
+            },
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 5000,
+              "maxPrice": 15000,
+              "priceCurrency": "BRL"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sistema de agendamento",
+              "description": "Reservas, horários e gestão de agenda para clínicas, salões e consultorias."
+            },
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 2000,
+              "maxPrice": 5000,
+              "priceCurrency": "BRL"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Software personalizado",
+              "description": "Dashboards, IA e fluxos feitos sob medida para o negócio."
+            }
+          }
         ]
       },
       {
@@ -117,8 +202,63 @@
         "inLanguage": "pt-BR",
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://zdtecnologia.com.br/assets/sudra-lockup-dark-1200.png"
+          "url": "https://zdtecnologia.com.br/assets/og-image.png",
+          "width": 1280,
+          "height": 720
+        },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero h1", ".about-body", ".faq-list"]
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://zdtecnologia.com.br/#faq",
+        "isPartOf": {
+          "@id": "https://zdtecnologia.com.br/#webpage"
+        },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "O que é a SUDRA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A SUDRA é a marca da sociedade entre SudreScodeS e Dtech Labs. Desenvolvemos sites e sistemas (pedidos, ERP/CRM, agendamento e software sob medida) para o dia a dia do negócio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quais serviços a SUDRA oferece?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sites e landings, sistemas de pedidos e vendas, ERP/CRM, agendamento e software personalizado (dashboards, IA e fluxos específicos)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "A SUDRA atende em português e inglês?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim. O site e o atendimento estão disponíveis em português e inglês."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como pedir um orçamento?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fale pelo WhatsApp (+55 11 99978-3889) ou pelo e-mail contato@sudra.com.br. Alinhamos escopo, prazo e investimento conforme o projeto."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Os preços do site são finais?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. As faixas são referência. O valor final depende do escopo, da complexidade e do prazo, e pode ser negociado."
+            }
+          }
+        ]
       }
     ]
   }
@@ -174,6 +314,7 @@
           <li><a href="#ideals" data-i18n="nav.ideals">Ideais</a></li>
           <li><a href="#works" data-i18n="nav.works">Trabalhos</a></li>
           <li><a href="#pricing" data-i18n="nav.pricing">Preços</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
         </ul>
       </nav>
@@ -346,11 +487,51 @@
                 <th data-i18n="pricing.col.price">Preço</th>
               </tr>
             </thead>
-            <tbody id="pricing-body"></tbody>
+            <tbody id="pricing-body">
+              <tr><td>Landing page / site bem simples</td><td>R$ 600–1.000</td></tr>
+              <tr><td>Site institucional</td><td>R$ 1.000–2.000</td></tr>
+              <tr><td>Site institucional mais completo</td><td>R$ 2.000–2.500</td></tr>
+              <tr><td>Site com funcionalidades específicas</td><td>R$ 2.500–5.000</td></tr>
+              <tr><td>Sistema de agendamento</td><td>R$ 2.000–5.000</td></tr>
+              <tr><td>Sistema de pedidos / vendas</td><td>R$ 3.000–8.000</td></tr>
+              <tr><td>Sistema de gestão / ERP / CRM</td><td>R$ 5.000–15.000</td></tr>
+              <tr><td>Sistema muito personalizado</td><td>Orçamento sob demanda</td></tr>
+            </tbody>
           </table>
         </div>
         <p class="pricing-note" data-i18n="pricing.note">Valores em reais. Em inglês, a tabela é exibida em dólares
           (faixas fixas).</p>
+      </div>
+    </section>
+
+    <section class="faq reveal is-visible" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="faq.title">Perguntas frequentes</h2>
+          <p data-i18n="faq.lead">Respostas diretas sobre a SUDRA, serviços e orçamento.</p>
+        </div>
+        <dl class="faq-list">
+          <div class="faq-item">
+            <dt data-i18n="faq.q1">O que é a SUDRA?</dt>
+            <dd data-i18n="faq.a1">A SUDRA é a marca da sociedade entre SudreScodeS e Dtech Labs. Desenvolvemos sites e sistemas (pedidos, ERP/CRM, agendamento e software sob medida) para o dia a dia do negócio.</dd>
+          </div>
+          <div class="faq-item">
+            <dt data-i18n="faq.q2">Quais serviços a SUDRA oferece?</dt>
+            <dd data-i18n="faq.a2">Sites e landings, sistemas de pedidos e vendas, ERP/CRM, agendamento e software personalizado (dashboards, IA e fluxos específicos).</dd>
+          </div>
+          <div class="faq-item">
+            <dt data-i18n="faq.q3">A SUDRA atende em português e inglês?</dt>
+            <dd data-i18n="faq.a3">Sim. O site e o atendimento estão disponíveis em português e inglês.</dd>
+          </div>
+          <div class="faq-item">
+            <dt data-i18n="faq.q4">Como pedir um orçamento?</dt>
+            <dd data-i18n="faq.a4">Fale pelo WhatsApp (+55 11 99978-3889) ou pelo e-mail contato@sudra.com.br. Alinhamos escopo, prazo e investimento conforme o projeto.</dd>
+          </div>
+          <div class="faq-item">
+            <dt data-i18n="faq.q5">Os preços do site são finais?</dt>
+            <dd data-i18n="faq.a5">Não. As faixas são referência. O valor final depende do escopo, da complexidade e do prazo, e pode ser negociado.</dd>
+          </div>
+        </dl>
       </div>
     </section>
 

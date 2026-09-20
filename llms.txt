@@ -1,0 +1,50 @@
+# SUDRA Technologies
+
+> Sites, sistemas de pedidos, ERP/CRM, agendamento e software sob medida.
+> Sociedade entre SudreScodeS e Dtech Labs. Atendimento em português e inglês.
+
+Site: https://zdtecnologia.com.br/
+Email: contato@sudra.com.br
+WhatsApp: https://wa.me/5511999783889
+GitHub (sócio): https://github.com/SudreScodeS
+
+## About
+
+SUDRA is the brand of the partnership between SudreScodeS and Dtech Labs.
+We build practical digital products for Brazilian businesses: clear scope,
+realistic timelines, and negotiable investment based on needs.
+
+A SUDRA é a marca da sociedade entre SudreScodeS e Dtech Labs.
+Unimos produto, engenharia e entrega prática para o dia a dia do negócio.
+
+## Services
+
+- Websites / landings / institutional sites (simple to feature-rich)
+- Order & sales systems (menu, cart, checkout, payments, order panel)
+- ERP / CRM (sales, inventory, finance, customers, reports, analytics)
+- Scheduling systems (clinics, salons, consultancies)
+- Custom software (dashboards, AI workflows, business-specific flows)
+
+## Reference pricing (BRL; USD shown on English locale)
+
+Ranges are starting references; final price depends on scope.
+
+- Landing / simple site: R$ 600–1.000
+- Institutional site: R$ 1.000–2.000
+- Full institutional site: R$ 2.000–2.500
+- Site with custom features: R$ 2.500–5.000
+- Scheduling system: R$ 2.000–5.000
+- Orders / sales system: R$ 3.000–8.000
+- ERP / CRM: R$ 5.000–15.000
+- Highly custom system: quote on demand
+
+## Contact
+
+Prefer WhatsApp or email to align scope, timeline, and budget.
+Homepage sections: About, Services, Ideals, Work, Pricing, Contact.
+
+## Optional
+
+- [Homepage](https://zdtecnologia.com.br/): full portfolio
+- [Sitemap](https://zdtecnologia.com.br/sitemap.xml)
+- [robots.txt](https://zdtecnologia.com.br/robots.txt)
