@@ -21,9 +21,9 @@
 
   const WA_MESSAGES = {
     pt:
-      "Ol\u00e1! Vi o portf\u00f3lio e tenho interesse em desenvolver um projeto (site ou sistema). Gostaria de entender o que faz mais sentido para o meu caso, alinhar escopo e prazo \u2014 e conversar sobre valores, que podemos negociar conforme a necessidade. Podemos falar?",
+      "Ol\u00e1! Vi o portf\u00f3lio da SUDRA e quero conversar sobre um projeto. Meu principal objetivo/desafio \u00e9: ",
     en:
-      "Hi! I reviewed the portfolio and I\u2019m interested in building a project (website or system). I\u2019d like to understand what fits my needs, align scope and timeline \u2014 and discuss pricing, which we can negotiate based on requirements. Can we talk?",
+      "Hi! I reviewed SUDRA's portfolio and would like to discuss a project. My main goal/challenge is: ",
   };
 
   /**
