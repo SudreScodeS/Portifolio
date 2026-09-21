@@ -1700,9 +1700,8 @@ main {
 }
 
 .pricing-table-wrap {
-  overflow-x: auto;
+  overflow: visible;
   max-width: 100%;
-  -webkit-overflow-scrolling: touch;
   border: 1px solid var(--line);
   background: transparent;
 }
@@ -1718,6 +1717,7 @@ main {
   text-align: left;
   padding: 16px 20px;
   border-bottom: 1px solid var(--line);
+  vertical-align: middle;
 }
 
 .pricing-table th {
@@ -1735,18 +1735,182 @@ main {
   border-bottom: none;
 }
 
-.pricing-table td:last-child {
+.pricing-row:hover,
+.pricing-row:focus-within {
+  background: color-mix(in srgb, var(--brand) 4%, transparent);
+}
+
+.pricing-col-product {
+  position: relative;
+  width: 38%;
+}
+
+.pricing-product {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: help;
+  position: relative;
+}
+
+.pricing-product-name {
+  line-height: 1.35;
+}
+
+.pricing-product-hint {
+  flex: 0 0 auto;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--dur-fast) var(--ease-soft), color var(--dur-fast) var(--ease-soft),
+    background var(--dur-fast) var(--ease-soft);
+}
+
+.pricing-product:hover .pricing-product-hint,
+.pricing-product:focus-visible .pricing-product-hint,
+.pricing-product[aria-expanded="true"] .pricing-product-hint {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+}
+
+.pricing-tip {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 10px);
+  z-index: 40;
+  width: min(22rem, 78vw);
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: var(--surface-solid);
+  color: var(--ink);
+  box-shadow: 0 12px 32px rgba(22, 19, 26, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-soft), transform var(--dur-fast) var(--ease-soft),
+    visibility var(--dur-fast) var(--ease-soft);
+}
+
+.pricing-tip::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: -6px;
+  width: 10px;
+  height: 10px;
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  background: var(--surface-solid);
+  transform: rotate(45deg);
+}
+
+.pricing-tip--above {
+  top: auto;
+  bottom: calc(100% + 10px);
+}
+
+.pricing-tip--above::before {
+  top: auto;
+  bottom: -6px;
+  border-left: 0;
+  border-top: 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pricing-product:hover .pricing-tip,
+.pricing-product:focus-visible .pricing-tip,
+.pricing-product.is-tip-open .pricing-tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.pricing-tip-title {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.pricing-tip ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pricing-tip li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.pricing-tip li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+}
+
+.pricing-col-price,
+.pricing-col-plan {
   font-family: var(--font-mono);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
   color: var(--brand);
+}
+
+.pricing-col-price {
+  white-space: nowrap;
+  width: 22%;
+}
+
+.pricing-col-plan {
+  width: 40%;
+  white-space: normal;
+  line-height: 1.4;
 }
 
 .pricing-note {
   margin-top: 14px;
   font-size: 0.8125rem;
   color: var(--muted);
+}
+
+.pricing-note-exclude {
+  margin-top: 8px;
+  max-width: 46rem;
 }
 
 /* —— FAQ —— */
@@ -2017,6 +2181,7 @@ html.js-ready .contact.reveal {
   }
 
   .pricing-table-wrap {
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -2024,6 +2189,19 @@ html.js-ready .contact.reveal {
   .pricing-table td {
     padding: 12px 14px;
     font-size: 0.875rem;
+  }
+
+  .pricing-col-product {
+    min-width: 11.5rem;
+  }
+
+  .pricing-col-price,
+  .pricing-col-plan {
+    min-width: 8.5rem;
+  }
+
+  .pricing-tip {
+    width: min(18rem, 88vw);
   }
 
   .faq {

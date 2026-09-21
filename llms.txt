@@ -28,14 +28,17 @@ Unimos produto, engenharia e entrega prática para o dia a dia do negócio.
 ## Reference pricing (BRL; USD shown on English locale)
 
 Ranges are starting references; final price depends on scope.
+Sites: setup payable in up to 4 installments.
+Systems: ongoing monthly fee + setup also payable in up to 4 installments.
+Table prices do not include hosting, database, or maintenance (billed separately).
 
-- Landing / simple site: R$ 600–1.000
-- Institutional site: R$ 1.000–2.000
-- Full institutional site: R$ 2.000–2.500
-- Site with custom features: R$ 2.500–5.000
-- Scheduling system: R$ 2.000–5.000
-- Orders / sales system: R$ 3.000–8.000
-- ERP / CRM: R$ 5.000–15.000
+- Landing / simple site: R$ 600–1.000 setup · up to 4x
+- Institutional site: R$ 1.000–2.000 setup · up to 4x
+- Full institutional site: R$ 2.000–2.500 setup · up to 4x
+- Site with custom features: R$ 2.500–5.000 setup · up to 4x
+- Scheduling system: R$ 2.000–5.000 setup · R$ 50–200/month
+- Orders / sales system: R$ 3.000–8.000 setup · R$ 400/month
+- ERP / CRM: R$ 5.000–15.000 setup · R$ 800/month
 - Highly custom system: quote on demand
 
 ## Contact

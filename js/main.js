@@ -28,79 +28,212 @@
 
   /**
    * Pricing rows - BRL (PT) / USD (EN). Fixed display ranges, not live FX.
+   * kind: site = setup + até 4x | system = setup + mensalidade (+ 4x no setup)
    */
   const PRICING = [
     {
       id: "landing",
+      kind: "site",
       label: {
         pt: "Landing page / site bem simples",
         en: "Landing page / simple site",
       },
       brl: "R$ 600\u20131.000",
       usd: "$200\u2013450",
+      includes: {
+        pt: [
+          "P\u00e1gina \u00fanica focada em convers\u00e3o",
+          "Layout responsivo (mobile e desktop)",
+          "Se\u00e7\u00f5es de oferta, benef\u00edcios e CTA",
+          "Formul\u00e1rio ou link de contato",
+        ],
+        en: [
+          "Single conversion-focused page",
+          "Responsive layout (mobile and desktop)",
+          "Offer, benefits, and CTA sections",
+          "Contact form or link",
+        ],
+      },
     },
     {
       id: "institutional",
+      kind: "site",
       label: {
         pt: "Site institucional",
         en: "Institutional site",
       },
       brl: "R$ 1.000\u20132.000",
       usd: "$450\u2013700",
+      includes: {
+        pt: [
+          "V\u00e1rias p\u00e1ginas (home, sobre, servi\u00e7os, contato)",
+          "Identidade visual alinhada \u00e0 marca",
+          "Navega\u00e7\u00e3o clara e responsiva",
+          "Formul\u00e1rio de contato",
+        ],
+        en: [
+          "Multiple pages (home, about, services, contact)",
+          "Visual identity aligned to the brand",
+          "Clear responsive navigation",
+          "Contact form",
+        ],
+      },
     },
     {
       id: "institutional-full",
+      kind: "site",
       label: {
         pt: "Site institucional mais completo",
         en: "Full institutional site",
       },
       brl: "R$ 2.000\u20132.500",
       usd: "$700\u20131,000",
+      includes: {
+        pt: [
+          "Estrutura ampliada com mais se\u00e7\u00f5es e p\u00e1ginas",
+          "Conte\u00fado e hierarquia mais elaborados",
+          "Formul\u00e1rios e CTAs adicionais",
+          "Ajustes finos de layout e responsividade",
+        ],
+        en: [
+          "Expanded structure with more sections and pages",
+          "Richer content hierarchy",
+          "Extra forms and CTAs",
+          "Finer layout and responsive polish",
+        ],
+      },
     },
     {
       id: "site-features",
+      kind: "site",
       label: {
         pt: "Site com funcionalidades espec\u00edficas",
         en: "Site with custom features",
       },
       brl: "R$ 2.500\u20135.000",
       usd: "$1,000\u20131,500",
+      includes: {
+        pt: [
+          "Base institucional + recursos sob medida",
+          "Integra\u00e7\u00f5es ou fluxos espec\u00edficos do neg\u00f3cio",
+          "\u00c1reas din\u00e2micas conforme a necessidade",
+          "Escopo alinhado antes da constru\u00e7\u00e3o",
+        ],
+        en: [
+          "Institutional base plus custom features",
+          "Integrations or business-specific flows",
+          "Dynamic areas as needed",
+          "Scope aligned before build",
+        ],
+      },
     },
     {
       id: "scheduling",
+      kind: "system",
       label: {
         pt: "Sistema de agendamento",
         en: "Scheduling system",
       },
       brl: "R$ 2.000\u20135.000",
       usd: "$1,000\u20132,000",
+      monthly: {
+        brl: "R$ 50\u2013200/m\u00eas",
+        usd: "$20\u201360/mo",
+      },
+      includes: {
+        pt: [
+          "Reservas e gest\u00e3o de hor\u00e1rios",
+          "Agenda para cl\u00ednicas, sal\u00f5es ou consultorias",
+          "Painel administrativo",
+          "Escopo alinhado antes da constru\u00e7\u00e3o",
+        ],
+        en: [
+          "Bookings and time-slot management",
+          "Calendar for clinics, salons, or consultancies",
+          "Admin panel",
+          "Scope aligned before build",
+        ],
+      },
     },
     {
       id: "orders",
+      kind: "system",
       label: {
         pt: "Sistema de pedidos / vendas",
         en: "Orders & sales system",
       },
       brl: "R$ 3.000\u20138.000",
       usd: "$1,400\u20132,500",
+      monthly: {
+        brl: "R$ 400/m\u00eas",
+        usd: "$150/mo",
+      },
+      includes: {
+        pt: [
+          "Card\u00e1pio, carrinho e checkout",
+          "Pagamentos e painel de pedidos",
+          "Fluxo de vendas para o dia a dia",
+          "Escopo alinhado antes da constru\u00e7\u00e3o",
+        ],
+        en: [
+          "Menu, cart, and checkout",
+          "Payments and orders admin panel",
+          "Day-to-day sales flow",
+          "Scope aligned before build",
+        ],
+      },
     },
     {
       id: "erp",
+      kind: "system",
       label: {
         pt: "Sistema de gest\u00e3o / ERP / CRM",
         en: "Management / ERP / CRM system",
       },
       brl: "R$ 5.000\u201315.000",
       usd: "$2,000\u20135,000",
+      monthly: {
+        brl: "R$ 800/m\u00eas",
+        usd: "$250/mo",
+      },
+      includes: {
+        pt: [
+          "Vendas, estoque, financeiro e clientes",
+          "Relat\u00f3rios e analytics",
+          "M\u00f3dulos conforme o escopo do projeto",
+          "Escopo alinhado antes da constru\u00e7\u00e3o",
+        ],
+        en: [
+          "Sales, inventory, finance, and customers",
+          "Reports and analytics",
+          "Modules according to project scope",
+          "Scope aligned before build",
+        ],
+      },
     },
     {
       id: "custom",
+      kind: "custom",
       label: {
         pt: "Sistema muito personalizado",
         en: "Highly custom system",
       },
       brl: "Or\u00e7amento sob demanda",
       usd: "Custom quote",
+      includes: {
+        pt: [
+          "Dashboards, IA e fluxos espec\u00edficos",
+          "Arquitetura sob medida para o neg\u00f3cio",
+          "Escopo, prazo e valores negociados",
+          "Mensalidade definida conforme o projeto",
+        ],
+        en: [
+          "Dashboards, AI, and specific workflows",
+          "Architecture tailored to the business",
+          "Scope, timeline, and pricing negotiated",
+          "Monthly fee defined per project",
+        ],
+      },
     },
   ];
 
@@ -272,15 +405,104 @@
       .replace(/"/g, "&quot;");
   }
 
+  function pricingPlanLabel(row, locale) {
+    if (row.kind === "site") {
+      return locale === "en" ? "Up to 4 installments" : "At\u00e9 4x";
+    }
+    if (row.kind === "system" && row.monthly) {
+      const monthly = locale === "en" ? row.monthly.usd : row.monthly.brl;
+      const orPay = locale === "en" ? "or up to 4x on setup" : "ou at\u00e9 4x no setup";
+      return monthly + " \u00b7 " + orPay;
+    }
+    return locale === "en" ? "Quote on request" : "Sob consulta";
+  }
+
   function renderPricing() {
     const locale = getLocale();
     const tbody = document.getElementById("pricing-body");
     if (!tbody) return;
-    tbody.innerHTML = PRICING.map(function (row) {
+    const tipTitle = locale === "en" ? "Includes" : "Inclui";
+    const lastFlipFrom = Math.max(0, PRICING.length - 2);
+    tbody.innerHTML = PRICING.map(function (row, index) {
       const label = row.label[locale] || row.label.pt;
       const price = locale === "en" ? row.usd : row.brl;
-      return "<tr><td>" + escapeHtml(label) + "</td><td>" + escapeHtml(price) + "</td></tr>";
+      const plan = pricingPlanLabel(row, locale);
+      const includes = (row.includes && (row.includes[locale] || row.includes.pt)) || [];
+      const tipId = "pricing-tip-" + row.id;
+      const tipPos = index >= lastFlipFrom ? " pricing-tip--above" : "";
+      const list = includes
+        .map(function (item) {
+          return "<li>" + escapeHtml(item) + "</li>";
+        })
+        .join("");
+      return (
+        '<tr class="pricing-row" data-kind="' +
+        escapeHtml(row.kind) +
+        '">' +
+        '<td class="pricing-col-product">' +
+        '<button type="button" class="pricing-product" aria-expanded="false" aria-describedby="' +
+        tipId +
+        '">' +
+        '<span class="pricing-product-name">' +
+        escapeHtml(label) +
+        "</span>" +
+        '<span class="pricing-product-hint" aria-hidden="true">i</span>' +
+        '<span class="pricing-tip' +
+        tipPos +
+        '" id="' +
+        tipId +
+        '" role="tooltip">' +
+        '<span class="pricing-tip-title">' +
+        escapeHtml(tipTitle) +
+        "</span>" +
+        "<ul>" +
+        list +
+        "</ul>" +
+        "</span>" +
+        "</button>" +
+        "</td>" +
+        '<td class="pricing-col-price">' +
+        escapeHtml(price) +
+        "</td>" +
+        '<td class="pricing-col-plan">' +
+        escapeHtml(plan) +
+        "</td>" +
+        "</tr>"
+      );
     }).join("");
+    wirePricingTips();
+  }
+
+  function closePricingTips(except) {
+    Array.prototype.forEach.call(document.querySelectorAll(".pricing-product.is-tip-open"), function (btn) {
+      if (btn === except) return;
+      btn.classList.remove("is-tip-open");
+      btn.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function wirePricingTips() {
+    const tbody = document.getElementById("pricing-body");
+    if (!tbody || tbody.dataset.tipWired === "1") return;
+    tbody.dataset.tipWired = "1";
+
+    tbody.addEventListener("click", function (e) {
+      const btn = e.target.closest && e.target.closest(".pricing-product");
+      if (!btn || !tbody.contains(btn)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const open = !btn.classList.contains("is-tip-open");
+      closePricingTips(btn);
+      btn.classList.toggle("is-tip-open", open);
+      btn.setAttribute("aria-expanded", String(open));
+    });
+
+    document.addEventListener("click", function () {
+      closePricingTips();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closePricingTips();
+    });
   }
 
   function buildCarousel(section) {
